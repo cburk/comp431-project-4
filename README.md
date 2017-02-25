@@ -1,3 +1,5 @@
+Modified by me
+
 # Example COMP431/531 Frontend Repository
 
 As you develop your frontend application you will eventually want to have a separate
