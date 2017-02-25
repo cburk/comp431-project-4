@@ -4,6 +4,7 @@ const Reducer = (state = {
     location: Actions.LANDING_PAGE,
     text: 'State originates in the reducer',
     message: '',
+    uName: ''
 }, action) => {
     switch (action.type) {
         case Actions.UPDATE_LOCATION:
@@ -12,6 +13,8 @@ const Reducer = (state = {
             return { ...state, text: action.text, message: '' }
         case Actions.ERROR:
             return { ...state, message: action.message }
+        case Actions.LOGIN:
+            return { ...state, uName: action.uName }
         default:
             return state
     }

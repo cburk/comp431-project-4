@@ -3,6 +3,7 @@ export const ERROR = 'ERROR'
 export const MAIN_PAGE = 'MAIN_PAGE'
 export const PROFILE_PAGE = 'PROFILE_PAGE'
 export const LANDING_PAGE = 'LANDING_PAGE'
+export const LOGIN = 'LOGIN'
 
 export const ActionTypes = {
     UPDATE_TEXT: 'UPDATE_TEXT', 
