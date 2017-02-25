@@ -6,14 +6,14 @@ import createLogger from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
 
 import Reducer from './reducers'
-import Hello from './hello'
+import App from './app'
 
 const logger = createLogger()
 const store = createStore(Reducer, applyMiddleware(logger))
 
 render(
     <Provider store={store}>
-        <Hello />
+        <App />
     </Provider>,
     document.getElementById('app')
 )

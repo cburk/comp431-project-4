@@ -1,10 +1,13 @@
 import * as Actions from './actions'
 
 const Reducer = (state = {
-    text: 'hello world!',
+    location: Actions.LANDING_PAGE,
+    text: 'State originates in the reducer',
     message: '',
 }, action) => {
     switch (action.type) {
+        case Actions.UPDATE_LOCATION:
+            return {...state, location: action.location}
         case Actions.UPDATE_TEXT:
             return { ...state, text: action.text, message: '' }
         case Actions.ERROR:
