@@ -1,28 +1,23 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import * as Actions from './actions'
+import Navbutton from './navbutton'
 
-export const Navbar = ({ logout, navMain, navProfile }) => {
-    let uName;
-    let pWord;
-
-    const _navigateProfile = (e) => {
-        navProfile()
-    }
-    const _navigateLogout = (e) => {
-        logout()
-    }
-    const _navigateMain = (e) => {
-        navMain()
-    }
-    
+export const Navbar = ({ navPages }) => {    
+    console.log(navPages)
+    navPages.map((item)=>{
+        console.log(item)
+        console.log(item.pageType)
+        console.log(item.description)
+    })
+    //let buttons = navPages.map((page) => (<button value={page} onclick=>{page}</button>))
     return (
     <div>
         <span>
         Navbar
-        <button onClick={_navigateProfile}>Profile</button>
-        <button onClick={_navigateMain}>Main</button>
-        <button onClick={_navigateLogout}>Logout</button>
+        {navPages.map((descr) => (
+            <Navbutton id={descr.pageType} text={descr.description} />
+        ))}
         </span>
     </div>)
 }
@@ -30,6 +25,7 @@ export const Navbar = ({ logout, navMain, navProfile }) => {
 export default connect(
     (state) => { 
         return {
+            navPages: state.navPagesList
         }
     },
     (dispatch) => {
@@ -41,37 +37,3 @@ export default connect(
     }
 )(Navbar)
 
-
-/*
-import React, { PropTypes } from 'react'
-import { connect } from 'react-redux'
-import * as Actions from './actions'
-
-export const NavBar = ({ navigate }) => {
-    let uName;
-    let pWord;
-
-    const _navigate = (e) => {
-        console.log("In nav")
-        console.log(e)
-        navigate("memes")
-    }
-    
-    return (
-    <div>
-        <div>
-        This is the nav bar
-        <span>
-            <button id="profile" onClick={_navigate}>Profile</button>
-            <button id="logout" onClick={_navigate}>Logout</button>
-        </span>
-    </div>
-    )
-}
-
-export default connect(
-    (state) => ({  }),
-    (dispatch) => ({ navigate: () => {} })
-)(NavBar)
-
-*/

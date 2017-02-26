@@ -6,6 +6,8 @@ export const LANDING_PAGE = 'LANDING_PAGE'
 // TODO: In acitontypes?
 export const LOGIN = 'LOGIN'
 
+export const fullPagesList = [{pageType: PROFILE_PAGE, description: 'Profile'}, {pageType: LANDING_PAGE, description: 'Logout'}, {pageType: MAIN_PAGE, description: 'Main'}]
+
 export const ActionTypes = {
     UPDATE_TEXT: 'UPDATE_TEXT', 
     NAVIGATE_TO: 'NAVIGATE_TO',
@@ -48,4 +50,16 @@ export const navProfile = () => {
 
 export const logout = () => {
     return { type: ActionTypes.LOGOUT }
+}
+
+export const navigateTo = (pageType) => {
+    console.log("Asked to navigate to ", pageType)
+    switch(pageType){
+        case MAIN_PAGE:
+            return navMain()
+        case PROFILE_PAGE:
+            return navProfile()
+        default:
+            return logout()
+    }
 }
