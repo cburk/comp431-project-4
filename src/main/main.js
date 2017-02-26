@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import Navbar from '../navbar'
 
 export const Main = ({ }) => {
     return (
-    <span>
+    <div>
         <b>On main page</b>
-    </span>)
+        <Navbar />
+    </div>)
 }
 
 

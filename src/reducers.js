@@ -14,7 +14,13 @@ const Reducer = (state = {
         case Actions.ERROR:
             return { ...state, message: action.message }
         case Actions.LOGIN:
-            return { ...state, uName: action.uName }
+            return { ...state, uName: action.uName, location: Actions.MAIN_PAGE }
+        case Actions.ActionTypes.NAVIGATE_TO:
+            console.log("REEEEEEE")
+            return { ...state, location: action.page }
+        case Actions.ActionTypes.LOGOUT:
+            return { ...state, location: Actions.LANDING_PAGE, uName: '' }
+            
         default:
             return state
     }

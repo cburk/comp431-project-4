@@ -1,11 +1,14 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
+import Navbar from '../navbar'
 
 export const Profile = ({ }) => {
     return (
-    <span>
+    <div>
         <b>On profile page</b>
-    </span>)
+        <Navbar />
+    </div>
+    )
 }
 
 
