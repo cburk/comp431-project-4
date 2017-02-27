@@ -37,7 +37,7 @@ export default connect(
     },
     (dispatch) => { 
         return {
-            login: (text) => dispatch({type: Actions.LOGIN, uName: text})
+            login: (text) => dispatch(Actions.loginUser(text))
         }
     }
 )(Login)

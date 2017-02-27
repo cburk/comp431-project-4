@@ -22,14 +22,19 @@ export const registerUser = ( uName,
     dob,
     zip
 ) => {
+    // TODO by wednesday: Different register function, not just login?  Separate functions in practice,
+    // also want new dob, zip, etc. for this assignment
     // TODO Later: Do something w/ other fields?
     
     return loginUser(uName)
 }
 
-export const loginUser = (uName) => {
+export const loginUser = (Uname) => {
     console.log("did we make it to actions?")
-    return { type: LOGIN, uName: uName }
+    console.log("action found name,", Uname)
+    //curUser: {name: '', email: '', phone: '', dob: '', zipcode: ''},
+    console.log
+    return { type: LOGIN, name: Uname }
 }
 
 export const updateText = (text) => {
