@@ -1,11 +1,7 @@
 import * as Actions from './actions'
 import * as ProfileActions from './profile/profileActions'
 
-const postInfo = require('../data/PostInfo.json')
-
-console.log("Did we get user info?")
-console.log(postInfo)
-console.log(postInfo[0].name)
+const articlesList = require('../data/ArticlesList.json')
 
 // Thought/TODO: Maybe sort navPagesList each time, so they come out looking the same?
 const Reducer = (state = {
@@ -16,7 +12,7 @@ const Reducer = (state = {
     curUser: {name: '', displayName: 'No display name set', email: 'asdf@stuff.com', phone: '123-456-7891', dob: 'N/A', zipcode: '14253'},
     //uName: '',
     navPagesList: [],
-    posts: postInfo
+    articlesList: articlesList
 }, action) => {
     switch (action.type) {
         case Actions.UPDATE_TEXT:

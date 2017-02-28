@@ -10,7 +10,7 @@ const phoneRE = /\d\d\d[\-]\d\d\d[\-]\d\d\d\d/
 
 const zipcodeRE = /[0-9]{5}/
 
-export const updateUserInfo = (displayName, email, phone, dob, zipcode) => {
+export const updateUserInfo = (displayName, email, phone, zipcode) => {
     let updateObj = {}
     if(displayName)
         updateObj["displayName"] = displayName
@@ -40,16 +40,8 @@ export const updateUserInfo = (displayName, email, phone, dob, zipcode) => {
     }
     
     console.log("Action created obj to udpate following fields: ", updateObj)
-    /*
-    if(phone && phoneRE.exec(phone) != phone){
-        return {type: Actions.ERROR, msg: "ERROR: Invalid phone format: " + phone}
-    }
-    if(zipcode && zipcodeRE.exec(zipcode) != zipcode){
-        return {type: Actions.ERROR, msg: "ERROR: Invalid zipcode format: " + zipcode}
-    }
-    */
+
        
-    //TODO: Date re
     return {type: ActionTypes.UPDATE_INFO, updates: updateObj}
     //return {type: ActionTypes.UPDATE_INFO, displayName: displayName, email: email, phone: phone, dob: dob, zipcode: zipcode}
 }
