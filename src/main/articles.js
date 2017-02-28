@@ -18,7 +18,7 @@ export const Articles = ({ allArticles }) => {
         Articles List
         <span>
         {allArticles.map((art) => (
-            <Article author={art.author} text={art.text} img={art.image} />
+            <Article author={art.author} text={art.text} img={art.image} key={art.id} id={art.id} />
         ))}
         </span>
     </div>)
