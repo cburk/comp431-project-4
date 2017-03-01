@@ -4,7 +4,14 @@ import * as ArticleActions from './articleActions'
 import Article from './article'
 import NewArticle from './newArticle'
 
-export const Articles = ({ allArticles }) => {    
+export const Articles = ({ allArticles, searchArticles }) => {    
+    let searchQuery;
+    const _searchArticles = () => {
+        //TODO: Maybe raise error if empty search?  This seems fine tho
+        if(searchQuery && searchQuery.value.length != 0)
+            searchArticles(searchQuery.value)
+    }
+    
     console.log(allArticles)
     allArticles.map((item)=>{
         console.log(item)
@@ -14,6 +21,8 @@ export const Articles = ({ allArticles }) => {
     //let buttons = navPages.map((page) => (<button value={page} onclick=>{page}</button>))
     return (
     <div>
+        <input type="text" placeholder="Search here" ref={(node) => searchQuery = node} />
+        <button onClick={_searchArticles}>Search</button>
         
         Articles List
         <span>
@@ -34,7 +43,7 @@ export default connect(
     },
     (dispatch) => {
         return {
-            //logout: () => dispatch(Actions.logout()),
+            searchArticles: (query) => dispatch(ArticleActions.searchArticles(query)),
         }
     }
 )(Articles)

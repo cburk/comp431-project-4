@@ -12,11 +12,7 @@ export const Article = ({ author, text, img, id}) => {
         navigate(id)
     }
     */
-    
-    console.log("In article obj")
-    console.log(img)
-    console.log("Img above? ^")
-    
+        
     // TODO: Should either filter in articles based on filter setting, or have some kind of article id
     // First one is probably the more react/reduxy way to do it, also probably more scalable if we sort by different attrs
     return (
@@ -33,7 +29,6 @@ export const Article = ({ author, text, img, id}) => {
             <button>Edit</button>
         </div>
     )
-    //TODO: Add buttons and such
 }
 
 Article.propTypes = {
