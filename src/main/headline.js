@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import UserStatus from './userStatus'
 import * as StatusActions from './statusActions'
 
 
@@ -20,7 +19,9 @@ export const FollowingList = ({ curUserStatus, updateStatus }) => {
     
     return (
     <div>
-        <UserStatus author={curUserStatus.author} image={curUserStatus.image} status={curUserStatus.status} />
+        <img src={curUserStatus.image}></img>
+        <h5>Logged in as: {curUserStatus.person}</h5>
+        <p>Status: {curUserStatus.status}</p>        
         <input type="text" placeholder="Enter new status here" ref={(node) => newStatus = node} />
         <button onClick={_updateStatus}>Update Status</button>
     </div>)

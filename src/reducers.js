@@ -56,6 +56,11 @@ const Reducer = (state = {
             return { ...state, articlesList: newArticles, nextArticleID: action.id + 1 }
         case StatusActions.ActionTypes.UPDATE_STATUS:
             return { ...state, curUserStatus: { ...userStatus, status: action.newStatus } }
+        case StatusActions.ActionTypes.REMOVE_FRIEND:
+            return { ...state, friendStatuses: state.friendStatuses.filter((fStat)=>{return fStat.person != action.person}) }
+        case StatusActions.ActionTypes.ADD_FRIEND:
+            //TODO Later: Just hardcoded other info like the image, status
+            return { ...state, friendStatuses: [ ...state.friendStatuses, {person: action.person, status: 'HARDCODED NEW FRIEND STATUS', image: 'gdp_breakdown.gif'} ] }
         default:
             return state
     }
