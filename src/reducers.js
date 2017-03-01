@@ -1,8 +1,12 @@
 import * as Actions from './actions'
 import * as ProfileActions from './profile/profileActions'
 import * as ArticleActions from './main/articleActions'
+import * as StatusActions from './main/statusActions'
 
+// Hard coded values
 const fullArticlesList = require('../data/ArticlesList.json')
+const userStatus = require('../data/UserStatus.json')
+const friendStatuses = require('../data/FriendStatusList.json')
 
 const resetState = () => {
     return {articlesList: fullArticlesList, errorMsg: ''}
@@ -18,7 +22,9 @@ const Reducer = (state = {
     //uName: '',
     navPagesList: [],
     articlesList: fullArticlesList,
-    nextArticleID: fullArticlesList.length + 1
+    nextArticleID: fullArticlesList.length + 1,
+    curUserStatus: userStatus,
+    friendStatuses: friendStatuses
 }, action) => {
     switch (action.type) {
         case Actions.UPDATE_TEXT:
@@ -45,10 +51,11 @@ const Reducer = (state = {
             return { ...state, articlesList: fullArticlesList.filter((article) => {
                     return (action.searchString == article.author || article.text.search(action.searchString) != -1)
                    }) }
-       case ArticleActions.ActionTypes.ADD_ARTICLE:
+        case ArticleActions.ActionTypes.ADD_ARTICLE:
             let newArticles = [ {id: action.id, author: action.author, text: action.text}, ...state.articlesList ]
             return { ...state, articlesList: newArticles, nextArticleID: action.id + 1 }
-            
+        case StatusActions.ActionTypes.UPDATE_STATUS:
+            return { ...state, curUserStatus: { ...userStatus, status: action.newStatus } }
         default:
             return state
     }

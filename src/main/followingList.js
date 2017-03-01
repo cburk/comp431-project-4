@@ -2,13 +2,13 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Navbar from '../navbar'
 import Articles from './articles'
-import Headline from './headline'
-import FollowingList from './followingList'
+import UserStatus from './userStatus'
 
-export const Main = ({  }) => {    
+export const FollowingList = ({  }) => {    
     return (
     <div>
         <Headline />
+        <FollowingList />
         <b>On main page</b>
         <Navbar />
         <p></p>
@@ -21,4 +21,4 @@ export const Main = ({  }) => {
 export default connect(
     (state) => ({  }),
     (dispatch) => ({  })
-)(Main)
+)(FollowingList)
