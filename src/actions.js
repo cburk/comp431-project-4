@@ -24,7 +24,7 @@ export const registerUser = ( uName,
     email,
     phone,
     dob,
-    zip
+    zipcode
 ) => {
     
     if(uNameRE.exec(uName) != uName)
