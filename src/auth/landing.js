@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import Login from './login'
 import Register from './register'
 
-export const Landing = ({ }) => {
+export const Landing = ({ ErrorMessage }) => {
     return (
     <div>
         <h1>Welcome to The Bigger Jail</h1>
         <b>Login/Register</b>
+        <span>{ErrorMessage}</span>
         <span>
             <Login />
             <Register />
@@ -18,6 +19,6 @@ export const Landing = ({ }) => {
 
 
 export default connect(
-    (state) => ({ text: state.text, message: state.message }),
-    (dispatch) => ({ update: (text) => {} })
+    (state) => ({ ErrorMessage: state.errorMsg }),
+    (dispatch) => ({  })
 )(Landing)

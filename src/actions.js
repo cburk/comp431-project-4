@@ -14,18 +14,44 @@ export const ActionTypes = {
     LOGOUT: 'LOGOUT'
 }
 
+const uNameRE = /[A-Za-z][A-Za-z1-9]+/
+const emailRE = /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/
+const phoneRE = /\d\d\d[\-]\d\d\d[\-]\d\d\d\d/
+const zipcodeRE = /[0-9]{5}/
+      
 export const registerUser = ( uName,
     pWord,
-    displName,
     email,
     phone,
     dob,
     zip
 ) => {
-    // TODO by wednesday: Different register function, not just login?  Separate functions in practice,
-    // also want new dob, zip, etc. for this assignment
-    // TODO Later: Do something w/ other fields?
     
+    if(uNameRE.exec(uName) != uName)
+        return {type: ERROR, msg: "ERROR: Invalid username format: " + uName}
+    
+    if(emailRE.exec(email) != email)
+        return {type: ERROR, msg: "ERROR: Invalid email format: " + email}
+    
+    if(phoneRE.exec(phone) != phone)
+        return {type: ERROR, msg: "ERROR: Invalid phone format: " + phone}
+            
+    //Enure users are 18+ -->    
+    let over18 = false
+    let curTime = Date.now();
+    let curDate = new Date(curTime);
+    let cutoffYear = curDate.getFullYear() - 18;
+    let cutoffTime = new Date(curDate.setFullYear(cutoffYear));
+    let birthTime = new Date(Date.parse(dob));
+    over18 = (cutoffTime.getTime() > birthTime.getTime())
+    if(!over18){
+        return { type: ERROR, msg: 'Error: must be over 18' }
+    }
+    
+    if(zipcodeRE.exec(zipcode) != zipcode)
+        return {type: ERROR, msg: "ERROR: Invalid zipcode format: " + zipcode}    
+    
+    // TODO Later: something w/ other fields  
     return loginUser(uName)
 }
 

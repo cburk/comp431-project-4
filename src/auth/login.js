@@ -7,12 +7,8 @@ export const Login = ({ login }) => {
     let pWord;
 
     const _login = () => {
-        console.log("Inside login click")
-        console.log(uName.value)
-        console.log(pWord.value)
         // TODO: Length checking/other validation I think?
         if ((uName && uName.value) && (pWord && pWord.value)) {
-            console.log("Component triggered login w/ ", uName.value, pWord.value)
             // For now, not really checking w/ password
             login(uName.value)
             uName.value = ''

@@ -7,7 +7,6 @@ export const ActionTypes = {
 
 const emailRE = /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/
 const phoneRE = /\d\d\d[\-]\d\d\d[\-]\d\d\d\d/
-
 const zipcodeRE = /[0-9]{5}/
 
 export const updateUserInfo = (displayName, email, phone, zipcode) => {
