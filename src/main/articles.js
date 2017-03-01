@@ -8,8 +8,10 @@ export const Articles = ({ allArticles, searchArticles }) => {
     let searchQuery;
     const _searchArticles = () => {
         //TODO: Maybe raise error if empty search?  This seems fine tho
-        if(searchQuery && searchQuery.value.length != 0)
+        if(searchQuery && searchQuery.value.length != 0){
             searchArticles(searchQuery.value)
+            searchQuery.value = ""
+        }
     }
     
     console.log(allArticles)
@@ -30,6 +32,8 @@ export const Articles = ({ allArticles, searchArticles }) => {
             <Article author={art.author} text={art.text} img={art.image} key={art.id} id={art.id} />
         ))}
         </span>
+        
+        <NewArticle />
     </div>)
         
     //<NewArticle />

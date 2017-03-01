@@ -17,7 +17,8 @@ const Reducer = (state = {
     curUser: {name: '', displayName: 'No display name set', email: 'asdf@stuff.com', phone: '123-456-7891', dob: 'N/A', zipcode: '14253'},
     //uName: '',
     navPagesList: [],
-    articlesList: fullArticlesList
+    articlesList: fullArticlesList,
+    nextArticleID: fullArticlesList.length + 1
 }, action) => {
     switch (action.type) {
         case Actions.UPDATE_TEXT:
@@ -40,9 +41,13 @@ const Reducer = (state = {
         case ProfileActions.ActionTypes.UPDATE_INFO:
             return { ...state, curUser: {...state.curUser, ...action.updates} }
         case ArticleActions.ActionTypes.SEARCH:
+            //TODO: Should it do similar search matching for author name, not just full match?
             return { ...state, articlesList: fullArticlesList.filter((article) => {
                     return (action.searchString == article.author || article.text.search(action.searchString) != -1)
                    }) }
+       case ArticleActions.ActionTypes.ADD_ARTICLE:
+            let newArticles = [ {id: action.id, author: action.author, text: action.text}, ...state.articlesList ]
+            return { ...state, articlesList: newArticles, nextArticleID: action.id + 1 }
             
         default:
             return state

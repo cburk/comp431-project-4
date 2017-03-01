@@ -1,10 +1,10 @@
 [
-    {"id": "1", "author": "Steve", "text": "cool memes"},
-    {"id": "2", "author": "Ashley", "text": "cool ranch doritos", "image": "forest.jpeg"},
-    {"id": "3", "author": "Deiter", "text": "my password is password", "image": "memes.jpg"},
-    {"id": "4", "author": "Rick", "text": "cool wbsite"},
-    {"id": "5", "author": "Susan", "text": "sup", "image": "gdp_breakdown.gif"},
-    {"id": "6", "author": "Deiter", "text": "my password is Deiter", "image": "forest.jpeg"},
-    {"id": "7", "author": "James", "text": "Lorem ipsum (etc.)"},
-    {"id": "8", "author": "Steve", "text": "Steve was here"}
+    {"id": 1, "author": "Steve", "text": "cool memes"},
+    {"id": 2, "author": "Ashley", "text": "cool ranch doritos", "image": "forest.jpeg"},
+    {"id": 3, "author": "Deiter", "text": "my password is password", "image": "memes.jpg"},
+    {"id": 4, "author": "Rick", "text": "cool wbsite"},
+    {"id": 5, "author": "Susan", "text": "sup", "image": "gdp_breakdown.gif"},
+    {"id": 6, "author": "Deiter", "text": "my password is Deiter", "image": "forest.jpeg"},
+    {"id": 7, "author": "James", "text": "Lorem ipsum (etc.)"},
+    {"id": 8, "author": "Steve", "text": "Steve was here"}
 ]
