@@ -23,7 +23,9 @@ export const NewArticle = ({ author, nextID, addNewArticle }) => {
     return (
         // TODO: Idk why this classname doesn't work
         <div class="addArticleInput">
+            <p>Add a new article:</p>
             <input type="text" ref={(node) => articleText = node} />
+            <input type="file" />
             <button onClick={_addNewArticle} >Post</button>
             <button onClick={_clear_input} >Clear</button>
         </div>
