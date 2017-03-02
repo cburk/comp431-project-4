@@ -7,10 +7,7 @@ import * as StatusActions from './statusActions'
 Each users status
 */
 export const UserStatus = ({ author, image, status, removeFriend }) => {    
-    console.log("Created user status w/ image: ", image)
-    
     const _removeFriend = () => {
-        console.log("In remove friend button click")
         removeFriend(author)
     }
 

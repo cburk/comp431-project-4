@@ -37,10 +37,6 @@ export const updateUserInfo = (displayName, email, phone, zipcode) => {
         else
             updateObj["zipcode"] = zipcode
     }
-    
-    console.log("Action created obj to udpate following fields: ", updateObj)
-
        
     return {type: ActionTypes.UPDATE_INFO, updates: updateObj}
-    //return {type: ActionTypes.UPDATE_INFO, displayName: displayName, email: email, phone: phone, dob: dob, zipcode: zipcode}
 }

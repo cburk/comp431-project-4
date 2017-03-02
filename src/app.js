@@ -19,13 +19,10 @@ export const App = ({ text, message, update, location }) => {
     
     const getCorrectPage = () => {
         if (location == Actions.MAIN_PAGE) {
-            console.log("routed to main")
             return <Main />
         } else if (location == Actions.PROFILE_PAGE) {
-            console.log("routed to profile")
             return <Profile />
         } else {
-            console.log("routed to landing")
             return (<Landing />)
         }
     }

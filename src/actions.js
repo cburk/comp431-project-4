@@ -56,10 +56,6 @@ export const registerUser = ( uName,
 }
 
 export const loginUser = (Uname) => {
-    console.log("did we make it to actions?")
-    console.log("action found name,", Uname)
-    //curUser: {name: '', email: '', phone: '', dob: '', zipcode: ''},
-    console.log
     return { type: LOGIN, name: Uname }
 }
 
@@ -71,7 +67,6 @@ export const updateText = (text) => {
 }
 
 export const navMain = () => {
-    console.log("Sending page: Main page")
     return { type: ActionTypes.NAVIGATE_TO, page: MAIN_PAGE }
 }
 
@@ -84,7 +79,6 @@ export const logout = () => {
 }
 
 export const navigateTo = (pageType) => {
-    console.log("Asked to navigate to ", pageType)
     switch(pageType){
         case MAIN_PAGE:
             return navMain()

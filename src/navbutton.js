@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import * as Actions from './actions'
 
 export const Navbutton = ({ id, text, navigate}) => {
-    console.log("In button func")
-    console.log(id)
-    
     const _navigate = () => {
         navigate(id)
     }

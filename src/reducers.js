@@ -32,9 +32,6 @@ const Reducer = (state = {
         case Actions.ERROR:
             return { ...state, errorMsg: action.msg }
         case Actions.LOGIN:
-            console.log("Login reducer action")
-            console.log(state.curUser)
-            console.log(action)
             return { ...state, curUser: {...state.curUser, name: action.name}, location: Actions.MAIN_PAGE, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != Actions.MAIN_PAGE}) }
         // TODO: Fill this in so it actually works
         //case Actions.REGISTER:

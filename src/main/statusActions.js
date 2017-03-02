@@ -7,7 +7,6 @@ export const ActionTypes = {
 }
 
 export const updateCurUserStatus = (newStatus) => {
-    console.log("Status action update status to: ", newStatus)
     // TODO: Later/Eventually probably need author so we know which one to update?  Or will that be obvious from who's loggedIn?
     return {type: ActionTypes.UPDATE_STATUS, newStatus: newStatus}
 }

@@ -4,13 +4,6 @@ import * as Actions from './actions'
 import Navbutton from './navbutton'
 
 export const Navbar = ({ navPages }) => {    
-    console.log(navPages)
-    navPages.map((item)=>{
-        console.log(item)
-        console.log(item.pageType)
-        console.log(item.description)
-    })
-    //let buttons = navPages.map((page) => (<button value={page} onclick=>{page}</button>))
     return (
     <div>
         <span>
@@ -30,9 +23,6 @@ export default connect(
     },
     (dispatch) => {
         return {
-            logout: () => dispatch(Actions.logout()),
-            navMain: () => dispatch(Actions.navMain()),
-            navProfile: () => dispatch(Actions.navProfile())
         }
     }
 )(Navbar)

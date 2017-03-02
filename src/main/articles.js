@@ -14,13 +14,6 @@ export const Articles = ({ allArticles, searchArticles }) => {
         }
     }
     
-    console.log(allArticles)
-    allArticles.map((item)=>{
-        console.log(item)
-        console.log(item.author)
-        console.log(item.text)
-    })
-    //let buttons = navPages.map((page) => (<button value={page} onclick=>{page}</button>))
     return (
     <div>
         <input type="text" placeholder="Search here" ref={(node) => searchQuery = node} />
@@ -36,7 +29,6 @@ export const Articles = ({ allArticles, searchArticles }) => {
         <NewArticle />
     </div>)
         
-    //<NewArticle />
 }
 
 export default connect(

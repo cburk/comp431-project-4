@@ -10,15 +10,16 @@ export const Main = ({  }) => {
     <div>
         <Headline />
         <FollowingList />
-    </div>)
-}
-/*
-
         <b>On main page</b>
         <Navbar />
         <p></p>
         <p></p>
         <Articles />
+    </div>)
+}
+/*
+
+
 */
 
 
