@@ -7,10 +7,12 @@ export const Navbar = ({ navPages }) => {
     return (
     <div>
         <span>
+        <p>
         Navbar
         {navPages.map((descr) => (
             <Navbutton id={descr.pageType} text={descr.description} />
         ))}
+        </p>
         </span>
     </div>)
 }

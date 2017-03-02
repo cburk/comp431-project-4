@@ -16,13 +16,16 @@ export const FollowingList = ({ friendStatuses, addFriend }) => {
     }
     
     return (
-    <div>
+    <div id="statusList">
         <p>Your friends statuses</p>
+        <span>
         {friendStatuses.map((friendStatus) => (
-            <div>
+            <div id="friendStatus">
                 <UserStatus author={friendStatus.person} image={friendStatus.image} status={friendStatus.status} />
             </div>
         ))}
+        </span>
+        <br />
         <input type="Text" placeholder="Enter New Friend's Name Here" ref = {(node) => friendName = node}></input>
         <button onClick={_addFriend}>Add Friend</button>
         

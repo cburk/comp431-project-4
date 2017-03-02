@@ -16,7 +16,7 @@ export const UserStatus = ({ author, image, status, removeFriend }) => {
     <div>
         <img src={image}></img>
         <h5>User {author} posted status:</h5>
-        <p>{status}</p>
+        <h7>{status}</h7>
         <button onClick={_removeFriend}>Remove Friend</button>
     </div>)
 }

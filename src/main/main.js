@@ -9,11 +9,9 @@ export const Main = ({  }) => {
     return (
     <div>
         <Headline />
-        <FollowingList />
-        <b>On main page</b>
+        <h1>Main Page</h1>
         <Navbar />
-        <p></p>
-        <p></p>
+        <FollowingList />
         <Articles />
     </div>)
 }

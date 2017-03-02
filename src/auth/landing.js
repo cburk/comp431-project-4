@@ -8,7 +8,6 @@ export const Landing = ({ ErrorMessage }) => {
     return (
     <div>
         <h1>Welcome to The Bigger Jail</h1>
-        <b>Login/Register</b>
         <span>{ErrorMessage}</span>
         <span>
             <Login />

@@ -6,7 +6,7 @@ import ProfileForm from './profileForm'
 export const Profile = ({ curUser }) => {
     return (
     <div>
-        <b>On profile page</b>
+        <h1>On profile page</h1>
         <Navbar />
         <img src="forest.jpeg"/>
         <ul>

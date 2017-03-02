@@ -8,7 +8,7 @@ h1 {
 }
 
 p {
-    background-color: lightcoral;
+    background-color: grey;
     font-family: verdana;
     font-size: 20px;
 }
@@ -18,7 +18,35 @@ img {
     width: 100px
 }
 
-div.article {
-    color: green;
+#headline {
+    background: white;
     border: 1px solid black;
+    width: 50%;
+    margin: 5%;
+}
+
+#statusList {
+    border: 1px solid black;
+    overflow: scroll;
+    margin: 5%
+}
+
+#friendStatus {
+    border: 1px dotted grey;
+    width: 25%;
+    height: 25%;
+    float: left;
+    margin-bottom: 10%;
+}
+
+#articles {
+    border: 1px solid black;
+    margin: 5%;
+}
+
+#article {
+    border: 1px dotted grey;
+    width: 25%;
+    height: 25%;
+    margin: 5%;
 }

@@ -15,11 +15,10 @@ export const Articles = ({ allArticles, searchArticles }) => {
     }
     
     return (
-    <div>
+    <div id="articles">
         <input type="text" placeholder="Search here" ref={(node) => searchQuery = node} />
         <button onClick={_searchArticles}>Search</button>
-        
-        Articles List
+        <p>Articles List</p>
         <span>
         {allArticles.map((art) => (
             <Article author={art.author} text={art.text} img={art.image} key={art.id} id={art.id} />

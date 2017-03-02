@@ -18,7 +18,7 @@ export const FollowingList = ({ curUserStatus, updateStatus }) => {
     }
     
     return (
-    <div>
+    <div id="headline">
         <img src={curUserStatus.image}></img>
         <h5>Logged in as: {curUserStatus.person}</h5>
         <p>Status: {curUserStatus.status}</p>        
