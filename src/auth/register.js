@@ -12,9 +12,7 @@ export const Register = ({ register, raiseError }) => {
     let zip;
     
     const _register = () => {
-        console.log("Inside register click")
         //Minimal validation logic necessary so that there's no null access (uName.value, for example)
-        
         if(!(uName && uName.value)){
             raiseError("USERNAME required")
             return

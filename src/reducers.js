@@ -49,7 +49,7 @@ const Reducer = (state = {
                     return (action.searchString == article.author || article.text.search(action.searchString) != -1)
                    }) }
         case ArticleActions.ActionTypes.ADD_ARTICLE:
-            let newArticles = [ {id: action.id, author: action.author, text: action.text}, ...state.articlesList ]
+            let newArticles = [ {id: action.id, author: action.author, text: action.text, timestamp: Date.now()}, ...state.articlesList ].sort((time1, time2) => {return time2.timestamp - time1.timestamp})
             return { ...state, articlesList: newArticles, nextArticleID: action.id + 1 }
         case StatusActions.ActionTypes.UPDATE_STATUS:
             return { ...state, curUserStatus: { ...userStatus, status: action.newStatus } }
