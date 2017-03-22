@@ -96,23 +96,20 @@ it('should not log in an invalid user', (done) => {
 it('should logout the user', (done) => {
 
   // the result from the mocked AJAX call
-  const username = 'loginTest'
-  const result = 'success'
+  const username = 'logoutTest'
+  const result = 'OK'
 
-  mock(`${actions.url}/login`, {
-  	method: 'POST',
-  	headers: {'Content-Type':'application/json'},
-  	json: { username, result}
+  mock(`${actions.url}/logout`, {
+  	method: 'PUT',
+  	headers: {'Content-Type':'text/plain'},
+  	text: result
   })
 
-    
-  authActions.loginUser('val1', 'ok-pass-word')(
-  	//fn => fn(action => {
+  authActions.logoutUser()(
     action => {
 	  expect(action).to.eql({ 
-	  	username, type: authActions.LOGIN
+	  	type: authActions.LOGOUT
 	  })
-      //TODO: Assert view = main, how to access state?
 	  done()
   	})
 
