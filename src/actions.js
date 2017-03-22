@@ -17,6 +17,7 @@ export const resource = (method, endpoint, payload) => {
     }
   }
   if (payload) options.body = JSON.stringify(payload)
+  console.log("Right before fetch to", `${url}/${endpoint}`)
 
   return fetch(`${url}/${endpoint}`, options)
     .then(r => {

@@ -38,7 +38,7 @@ it('should login the user', (done) => {
   mock(`${actions.url}/login`, {
   	method: 'POST',
   	headers: {'Content-Type':'application/json'},
-  	json: { username, result }
+  	json: { username, result}
   })
 
   // review how complex actions work in Redux
@@ -56,7 +56,7 @@ it('should login the user', (done) => {
   */
   console.log("Down here")
     
-  authActions.loginUser('does not matter', 'random password')(
+  authActions.loginUser('val1', 'ok-pass-word')(
   	//fn => fn(action => {
     action => {
       console.log('here?')
@@ -64,7 +64,28 @@ it('should login the user', (done) => {
 	  expect(action).to.eql({ 
 	  	username, type: authActions.LOGIN
 	  })
+      //TODO: Assert view = main, how to access state?
 	  done()
   	})
 
 })
+
+it('should not log in an invalid user', (done) => {
+
+    console.log("In wrong login test")
+    
+  authActions.loginUser('incorrectUname', 'aaa-aaa-aaa')(
+    action => {
+	  expect(action.type).to.eql(actions.ERROR)
+  	})
+
+  authActions.loginUser('asd1', 'wrong-password')(
+    action => {
+	  expect(action.type).to.eql(actions.ERROR)
+	  done()
+  	})  
+  
+    //TODO: Mock a call that results in wrong authorization?
+    
+})
+
