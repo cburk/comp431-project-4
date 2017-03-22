@@ -96,7 +96,7 @@ it('should not log in an invalid user', (done) => {
       action => {
           console.log("Finally made it back!")
           console.log(action)
-          expect(action.errorMsg).to.eql(errorMsg)
+          expect(action.msg).to.eql(errorMsg)
           done()
       }
   )

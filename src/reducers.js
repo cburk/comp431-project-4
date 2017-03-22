@@ -30,6 +30,8 @@ const Reducer = (state = {
         case Actions.UPDATE_TEXT:
             return { ...state, text: action.text, message: '' }
         case Actions.ERROR:
+            console.log("Are we here?")
+            console.log("What's the error look like? ", action)
             return { ...state, errorMsg: action.msg }
         case Actions.LOGIN:
             return { ...state, curUser: {...state.curUser, name: action.name}, location: Actions.MAIN_PAGE, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != Actions.MAIN_PAGE}) }

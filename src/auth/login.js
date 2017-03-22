@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import * as Actions from '../actions'
+import * as AuthActions from '../auth/authActions'
 
 export const Login = ({ login, raiseError }) => {
     let uName;
@@ -17,7 +18,7 @@ export const Login = ({ login, raiseError }) => {
             raiseError("ERROR: Login requires password")
             return
         }            
-        login(uName.value)
+        login(uName.value, pWord.value)
         uName.value = ''
         pWord.value = ''
     }
@@ -38,7 +39,7 @@ export default connect(
     },
     (dispatch) => { 
         return {
-            login: (text) => dispatch(Actions.loginUser(text)),
+            login: (text, pword) => AuthActions.loginUser(text, pword)(dispatch),
             raiseError: (msg) => dispatch({type: Actions.ERROR, msg: msg})
         }
     }

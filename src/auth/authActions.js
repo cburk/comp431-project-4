@@ -8,17 +8,18 @@ const pWordRE = /[a-zA-Z0-9]+\-[a-zA-Z0-9]+\-[a-zA-Z0-9]+/
       
 // TODO: Get password
 export const loginUser = (Uname, Pword) => (dispatch) => {
+    console.log("Inside loginKUser")
     //return { type: LOGIN, name: Uname }
     let thisJSON = {username: Uname, password: Pword}
     console.log("Found json: ", thisJSON)
     
     //Check properly formatted username, password
     if(uNameRE.exec(Uname) != Uname){
-        dispatch({type: actions.ERROR, errorMsg: "Wrong Login format"})
+        dispatch({type: actions.ERROR, msg: "Wrong Login format"})
         return
     }
     if(pWordRE.exec(Pword) != Pword){
-        dispatch({type: actions.ERROR, errorMsg: "Wrong password format"})
+        dispatch({type: actions.ERROR, msg: "Wrong password format"})
         return
     }
     
@@ -33,7 +34,7 @@ export const loginUser = (Uname, Pword) => (dispatch) => {
         }else{
             console.log("Invalid login part 1")
             console.log("Invalid login part", {type: actions.ERROR, errorMsg: r.errorMsg})
-            dispatch({type: actions.ERROR, errorMsg: r.errorMsg})
+            dispatch({type: actions.ERROR, msg: r.errorMsg})
         }
         done()
         })
