@@ -17,6 +17,10 @@ export const getArticles = (idOrUsername) => (dispatch) => {
     )
 }
 
+export const searchArticles = (query) => {
+    return {type: ActionTypes.SEARCH, searchString: query}
+}
+
 // TODO: Probably need to add image eventually, maybe error checking for users?  etc.
 export const addNewArticle = (id, author, text) => {
     //TODO: POST articles/

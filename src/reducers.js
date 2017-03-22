@@ -50,7 +50,7 @@ const Reducer = (state = {
             return { ...state, curUser: {...state.curUser, ...action.updates} }
         case ArticleActions.ActionTypes.SEARCH:
             //TODO: Should it do similar search matching for author name, not just full match?
-            return { ...state, articlesList: fullArticlesList.filter((article) => {
+            return { ...state, articlesList: state.articlesList.filter((article) => {
                     return (action.searchString == article.author || article.text.search(action.searchString) != -1)
                    }) }
         case ArticleActions.ActionTypes.ADD_ARTICLE:
