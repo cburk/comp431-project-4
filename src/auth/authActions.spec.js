@@ -71,8 +71,16 @@ it('should login the user', (done) => {
 })
 
 it('should not log in an invalid user', (done) => {
+  const errorMsg = "404: errorMsg"
+  const somePage = 'somePage'
+  mock(`${actions.url}/login`, {
+  	method: 'POST',
+    status: 404,
+  	headers: {'Content-Type':'application/json'},
+  	statusText: errorMsg
+  })
 
-    console.log("In wrong login test")
+  console.log("In wrong login test")
     
   authActions.loginUser('incorrectUname', 'aaa-aaa-aaa')(
     action => {
@@ -82,10 +90,15 @@ it('should not log in an invalid user', (done) => {
   authActions.loginUser('asd1', 'wrong-password')(
     action => {
 	  expect(action.type).to.eql(actions.ERROR)
-	  done()
-  	})  
+  	})      
   
-    //TODO: Mock a call that results in wrong authorization?
-    
+  authActions.loginUser('nex1', 'non-existent-combo')(
+      action => {
+          console.log("Finally made it back!")
+          console.log(action)
+          expect(action.errorMsg).to.eql(errorMsg)
+          done()
+      }
+  )
 })
 

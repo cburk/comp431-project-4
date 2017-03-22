@@ -28,7 +28,7 @@ export const resource = (method, endpoint, payload) => {
         console.log(`${method} ${endpoint} ${r.statusText}`)
         // TODO: Not sure if acceptable?  Makes more sense than constantly throwing errors tho
         //throw new Error(r.statusText)
-        return({errorMsg: r.statusText})
+        return({errorMsg: r.statusText, result: 'Fail'})
       }
     })
 }
@@ -80,10 +80,6 @@ export const registerUser = ( uName,
     
     // TODO Later: something w/ other fields  
     return loginUser(uName)
-}
-
-export const loginUser = (Uname) => {
-    return { type: LOGIN, name: Uname }
 }
 
 export const updateText = (text) => {

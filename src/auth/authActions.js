@@ -24,13 +24,17 @@ export const loginUser = (Uname, Pword) => (dispatch) => {
     
     actions.resource('POST', 'login', thisJSON)
         .then((r)=>{
+        console.log("Back in login,", r)
+        console.log(r.result)
         if(r.result == 'success'){
             //TODO: Set cookies when valid login
+            console.log("In success path?")
             dispatch({type: LOGIN, username: r.username})
+        }else{
+            console.log("Invalid login part 1")
+            console.log("Invalid login part", {type: actions.ERROR, errorMsg: r.errorMsg})
+            dispatch({type: actions.ERROR, errorMsg: r.errorMsg})
         }
+        done()
         })
-        .catch((error) => {
-            dispatch({type: actions.ERROR, errorMsg: "Invalid Login"})
-            console.log(error)
-    })
 }
