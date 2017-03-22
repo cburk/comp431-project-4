@@ -56,20 +56,22 @@ it('resource should be postable', (done) => {
   .catch(done)
 })
 
-/*
+
 it('resource should give me the http error', (done) => {
     console.log("Inside error resource test")
-  const expectedResult = "expectedResult"
+  const errorMsg = "404: errorMsg"
   const somePage = 'somePage'
   mock(`${actions.url}/${somePage}`, {
   	method: 'GET',
     status: 404,
   	headers: {'Content-Type':'application/json'},
-  	json: { expectedResult }
+  	statusText: errorMsg
   })
   
-  //Ensure resource actually requests the given page
-  expect(() => {actions.resource('GET',somePage,{})}).to.throw(Error)
-  done()
+  actions.resource('GET',somePage,{})
+    .then((r) => {
+        console.log("R is, ", r)
+        expect(r.errorMsg).to.eql(errorMsg)
+    }).then(done)
+    .catch(done)
 })
-*/

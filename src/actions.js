@@ -25,8 +25,10 @@ export const resource = (method, endpoint, payload) => {
         return (r.headers.get('Content-Type').indexOf('json') > 0) ? r.json() : r.text()
       } else {
         // useful for debugging, but remove in production
-        console.error(`${method} ${endpoint} ${r.statusText}`)
-        throw new Error(r.statusText)
+        console.log(`${method} ${endpoint} ${r.statusText}`)
+        // TODO: Not sure if acceptable?  Makes more sense than constantly throwing errors tho
+        //throw new Error(r.statusText)
+        return({errorMsg: r.statusText})
       }
     })
 }
