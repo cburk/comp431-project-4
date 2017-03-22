@@ -27,6 +27,9 @@ const Reducer = (state = {
     friendStatuses: friendStatuses
 }, action) => {
     switch (action.type) {
+        case ArticleActions.ActionTypes.UPDATE_ARTICLES:
+            console.log("Reducer found articles: ", action)
+            return { ...state, articlesList: action.articles }
         case Actions.UPDATE_TEXT:
             return { ...state, text: action.text, message: '' }
         case Actions.ERROR:
