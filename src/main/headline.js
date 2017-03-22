@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
 import * as StatusActions from './statusActions'
+import * as ProfileActions from '../profile/profileActions'
 
 
 /* 
@@ -30,5 +31,5 @@ export const FollowingList = ({ curUserStatus, updateStatus }) => {
 
 export default connect(
     (state) => ({ curUserStatus: state.curUserStatus }),
-    (dispatch) => ({ updateStatus: (newStat) => dispatch(StatusActions.updateCurUserStatus(newStat)) })
+    (dispatch) => ({ updateStatus: (newStat) => ProfileActions.updateHeadline(newStat)(dispatch) })
 )(FollowingList)

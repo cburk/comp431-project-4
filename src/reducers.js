@@ -15,12 +15,15 @@ const resetState = () => {
 }
 
 // Thought/TODO: Maybe sort navPagesList each time, so they come out looking the same?
+// TOOD: Status should probably be part of curUser's state
 const Reducer = (state = {
     errorMsg: '',
     location: Actions.LANDING_PAGE,
     text: 'State originates in the reducer',
     message: '',
     curUser: {name: '', displayName: 'No display name set', email: 'asdf@stuff.com', phone: '123-456-7891', dob: 'N/A', zipcode: '14253'},
+    betterCurUser: {name: '', email: '', phone: '', dob: '', zipcode: '', avatar: '', headline: '', password: ''},
+    //}
     //uName: '',
     navPagesList: [],
     articlesList: fullArticlesList,
@@ -50,6 +53,11 @@ const Reducer = (state = {
         // TODO: Rn just resetting article list and error msg after navigation
         case Actions.LOGOUT:
             return { ...state, location: Actions.LANDING_PAGE, uName: '', ...resetState() }
+        case ProfileActions.ActionTypes.SET_USER_INFO:
+            console.log("Action: ", action)
+            console.log("Before set info: ", state)
+            //console.log("After set info: ", { ...state, betterCurUser: {...state.betterCurUser, action.info}})
+            return { ...state, betterCurUser: {...state.betterCurUser, ...action.info}}
         case ProfileActions.ActionTypes.UPDATE_INFO:
             return { ...state, curUser: {...state.curUser, ...action.updates} }
         case ArticleActions.ActionTypes.SEARCH:
@@ -60,8 +68,9 @@ const Reducer = (state = {
         case ArticleActions.ActionTypes.ADD_ARTICLE:
             let newArticles = [ {id: action.id, author: action.author, text: action.text, timestamp: Date.now()}, ...state.articlesList ].sort((time1, time2) => {return time2.timestamp - time1.timestamp})
             return { ...state, articlesList: newArticles, nextArticleID: action.id + 1 }
-        case StatusActions.ActionTypes.UPDATE_STATUS:
-            return { ...state, curUserStatus: { ...userStatus, status: action.newStatus } }
+        case ProfileActions.ActionTypes.UPDATE_HEADLINE:
+            //TODO: Maybe one day resolve the headline/status conflict
+            return { ...state, curUserStatus: { ...userStatus, status: action.headline } }
         case StatusActions.ActionTypes.REMOVE_FRIEND:
             return { ...state, friendStatuses: state.friendStatuses.filter((fStat)=>{return fStat.person != action.person}) }
         case StatusActions.ActionTypes.ADD_FRIEND:

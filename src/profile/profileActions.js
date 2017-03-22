@@ -1,13 +1,53 @@
 import * as Actions from '../actions'
 
 export const ActionTypes = {
-    UPDATE_INFO: 'UPDATE_INFO'
+    SET_USER_INFO: 'SET_USER_INFO',
+    UPDATE_INFO: 'UPDATE_INFO',
+    UPDATE_HEADLINE: 'UPDATE_HEADLINE'
 }
-//Actions.ERROR
 
 const emailRE = /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/
 const phoneRE = /\d\d\d[\-]\d\d\d[\-]\d\d\d\d/
 const zipcodeRE = /[0-9]{5}/
+
+export const updateHeadline = (headline) => (dispatch) => {
+    Actions.resource('PUT', 'headline', {headline})
+        .then((r)=>{
+            if(r.headline == headline){
+            dispatch({type: ActionTypes.UPDATE_HEADLINE, headline})
+        }
+    })
+}
+
+
+//To be called immediately after logged in
+export const setUserInfoFromServer = (name, password) => (dispatch) => {
+    let userInfo = {name, password}
+    //Immediately set name, password
+    dispatch({type: ActionTypes.SET_USER_INFO, info: {name, password}})
+    
+    const dataPoints = ['email', 'dob', 'zipcode']
+    //Get user's email, dob, zipcode
+    dataPoints.map((dType) => {
+        Actions.resource('GET', dType)
+            .then((r)=>{
+            console.log(dType, "?,", r)
+            if(r.name == name){
+                console.log("Email, dob, etc? ", r[dType.valueOf()])
+                const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {}}
+                thisDispatch.info[dType] = r[dType]
+                dispatch(thisDispatch)
+            }
+        })
+    })
+    //Process for avatar slightly different
+    Actions.resource('GET', 'avatar')
+        .then((r)=>{
+        console.log("avatar", "?,", r)
+        if(r.avatars.length == 1)
+            dispatch({type: ActionTypes.SET_USER_INFO, info: r.avatars[0]})
+    })
+}
 
 export const updateUserInfo = (displayName, email, phone, zipcode) => {
     let updateObj = {}

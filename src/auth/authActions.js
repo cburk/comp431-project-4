@@ -1,6 +1,7 @@
 //import ERROR, {resource} from '../actions'
 import * as actions from '../actions'
 import * as articleActions from '../main/articleActions'
+import * as profileActions from '../profile/profileActions'
 
 export const LOGIN = 'LOGIN'
 
@@ -29,13 +30,12 @@ export const loginUser = (Uname, Pword) => (dispatch) => {
         console.log("Back in login,", r)
         console.log(r.result)
         if(r.result == 'success'){
-            //TODO: Set cookies when valid login?
             console.log("In success path?")
             dispatch({type: LOGIN, username: r.username})
             //Get all articles for feed
-            // TODO: Does it work if no username?  Want all posts for loggged in user
-            //articleActions.getArticles(r.username)(dispatch)
             articleActions.getArticles()(dispatch)
+            //Get user profile information TODO: Test this works
+            profileActions.setUserInfoFromServer(Uname, Pword)
         }else{
             console.log("Invalid login part 1")
             console.log("Invalid login part", {type: actions.ERROR, errorMsg: r.errorMsg})
