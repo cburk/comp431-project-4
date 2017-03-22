@@ -105,10 +105,11 @@ it('should logout the user', (done) => {
   	text: result
   })
 
-  authActions.logoutUser()(
+  // Unfortunately, because of how I designed navigation, stored in action
+  actions.logoutUser()(
     action => {
 	  expect(action).to.eql({ 
-	  	type: authActions.LOGOUT
+	  	type: actions.LOGOUT
 	  })
 	  done()
   	})

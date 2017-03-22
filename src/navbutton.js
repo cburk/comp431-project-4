@@ -21,7 +21,7 @@ export default connect(
     null,
     (dispatch, ownProps) => {
         return {
-            navigate: () => dispatch(Actions.navigateTo(ownProps.id))
+            navigate: () => Actions.navigateTo(ownProps.id)(dispatch)
         }
     }
 )(Navbutton)

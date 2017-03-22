@@ -3,10 +3,11 @@ export const ERROR = 'ERROR'
 export const MAIN_PAGE = 'MAIN_PAGE'
 export const PROFILE_PAGE = 'PROFILE_PAGE'
 export const LANDING_PAGE = 'LANDING_PAGE'
-// TODO: In acitontypes?
-export const LOGIN = 'LOGIN'
+
+export const LOGOUT = 'LOGOUT'
 
 import fetch from 'isomorphic-fetch'
+
 export const url = 'https://webdev-dummy.herokuapp.com'
 export const resource = (method, endpoint, payload) => {
   const options =  {
@@ -83,6 +84,17 @@ export const registerUser = ( uName,
     return loginUser(uName)
 }
 
+export const logoutUser = () => (dispatch) => {
+    resource('PUT', 'logout')
+        .then((r)=>{
+        console.log("Logging out requested, returned w/: ")
+        console.log(r)
+        if(r == 'OK'){
+            dispatch({ type: LOGOUT })
+        }
+    })   
+}
+
 export const updateText = (text) => {
     if (text.length > 5) {
         return { type: UPDATE_TEXT, text }
@@ -102,13 +114,15 @@ export const logout = () => {
     return { type: ActionTypes.LOGOUT }
 }
 
-export const navigateTo = (pageType) => {
+export const navigateTo = (pageType) => (dispatch) => {
     switch(pageType){
         case MAIN_PAGE:
-            return navMain()
+            dispatch(navMain())
+            return
         case PROFILE_PAGE:
-            return navProfile()
+            dispatch(navProfile())
+            return
         default:
-            return logout()
+            return logoutUser()(dispatch)
     }
 }

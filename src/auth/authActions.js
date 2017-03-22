@@ -3,7 +3,6 @@ import * as actions from '../actions'
 import * as articleActions from '../main/articleActions'
 
 export const LOGIN = 'LOGIN'
-export const LOGOUT = 'LOGOUT'
 
 const uNameRE = /[a-zA-Z][a-zA-Z][a-zA-Z][0-9]/
 const pWordRE = /[a-zA-Z0-9]+\-[a-zA-Z0-9]+\-[a-zA-Z0-9]+/
@@ -43,17 +42,4 @@ export const loginUser = (Uname, Pword) => (dispatch) => {
             dispatch({type: actions.ERROR, msg: r.errorMsg})
         }
     })
-}
-
-export const logoutUser = () => (dispatch) => {
-    actions.resource('PUT', 'logout')
-        .then((r)=>{
-        console.log("Logging out requested, returned w/: ")
-        console.log(r)
-        if(r == 'OK'){
-            dispatch({ type: LOGOUT })
-        }
-    })
-    
-    
 }

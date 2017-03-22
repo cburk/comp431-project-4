@@ -1,4 +1,5 @@
 import * as Actions from './actions'
+import * as AuthActions from './auth/authActions'
 import * as ProfileActions from './profile/profileActions'
 import * as ArticleActions from './main/articleActions'
 import * as StatusActions from './main/statusActions'
@@ -36,7 +37,7 @@ const Reducer = (state = {
             console.log("Are we here?")
             console.log("What's the error look like? ", action)
             return { ...state, errorMsg: action.msg }
-        case Actions.LOGIN:
+        case AuthActions.LOGIN:
             return { ...state, curUser: {...state.curUser, name: action.name}, location: Actions.MAIN_PAGE, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != Actions.MAIN_PAGE}) }
         // TODO: Fill this in so it actually works
         //case Actions.REGISTER:
@@ -44,7 +45,7 @@ const Reducer = (state = {
         case Actions.ActionTypes.NAVIGATE_TO:
             return { ...state, location: action.page, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != action.page}), ...resetState() }
         // TODO: Rn just resetting article list and error msg after navigation
-        case AuthActions.LOGOUT:
+        case Actions.LOGOUT:
             return { ...state, location: Actions.LANDING_PAGE, uName: '', ...resetState() }
         case ProfileActions.ActionTypes.UPDATE_INFO:
             return { ...state, curUser: {...state.curUser, ...action.updates} }
