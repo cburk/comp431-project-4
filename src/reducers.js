@@ -5,9 +5,10 @@ import * as ArticleActions from './main/articleActions'
 import * as StatusActions from './main/statusActions'
 
 // Hard coded values
-const fullArticlesList = require('../data/ArticlesList.json')
+//const fullArticlesList = require('../data/ArticlesList.json')
 const userStatus = require('../data/UserStatus.json')
 const friendStatuses = require('../data/FriendStatusList.json')
+let fullArticlesList = []
 
 const resetState = () => {
     return {articlesList: fullArticlesList, errorMsg: ''}
@@ -30,6 +31,8 @@ const Reducer = (state = {
     switch (action.type) {
         case ArticleActions.ActionTypes.UPDATE_ARTICLES:
             console.log("Reducer found articles: ", action)
+            // Update base list to be this user's articles
+            fullArticlesList = action.articles
             return { ...state, articlesList: action.articles }
         case Actions.UPDATE_TEXT:
             return { ...state, text: action.text, message: '' }
