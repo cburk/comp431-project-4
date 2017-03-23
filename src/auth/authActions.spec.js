@@ -29,7 +29,7 @@ afterEach(() => {
 it('should login the user', (done) => {
 
   // the result from the mocked AJAX call
-  const username = 'loginTest'
+  const username = 'asd1'
   const result = 'success'
 
   mock(`${actions.url}/login`, {
@@ -37,32 +37,17 @@ it('should login the user', (done) => {
   	headers: {'Content-Type':'application/json'},
   	json: { username, result}
   })
-
-  // review how complex actions work in Redux
-  // updateHeadline returns a complex action
-  // the complex action is called with dispatch as an argument
-  // dispatch is then called with an action as an argument
-  
-  //Not sure if should be username
-  /*
-  console.log("Through mocking")
-
-  console.log(authActions.loginUser('doesnotmatter'))
-  
-  console.log("basic test run")
-  */
     
-  authActions.loginUser('val1', 'ok-pass-word')(
+  authActions.loginUser(username, 'ok-pass-word', true)(
   	//fn => fn(action => {
     action => {
-	  expect(action).to.eql({ 
-	  	username, type: authActions.LOGIN
-	  })
-      //TODO: Assert view = main, how to access state?
+        console.log("Action returned: ", action)
+	  expect(action.name).to.eql(username) 
 	  done()
   	})
 
 })
+
 
 it('should not log in an invalid user', (done) => {
   const errorMsg = "404: errorMsg"

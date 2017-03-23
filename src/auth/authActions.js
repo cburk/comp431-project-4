@@ -9,7 +9,7 @@ const uNameRE = /[a-zA-Z][a-zA-Z][a-zA-Z][0-9]/
 const pWordRE = /[a-zA-Z0-9]+\-[a-zA-Z0-9]+\-[a-zA-Z0-9]+/
       
 // TODO: Get password
-export const loginUser = (Uname, Pword) => (dispatch) => {
+export const loginUser = (Uname, Pword, isTest=false) => (dispatch) => {
     console.log("Inside loginKUser")
     //return { type: LOGIN, name: Uname }
     let thisJSON = {username: Uname, password: Pword}
@@ -33,7 +33,8 @@ export const loginUser = (Uname, Pword) => (dispatch) => {
             console.log("In success path?")
             //Get all articles for feed
             console.log("Success path, getting articles")
-            articleActions.getArticles()(dispatch)
+            if(!isTest)  
+                articleActions.getArticles()(dispatch)
         }else{
             console.log("Invalid login part 1")
             console.log("Invalid login part", {type: actions.ERROR, errorMsg: r.errorMsg})
@@ -43,9 +44,10 @@ export const loginUser = (Uname, Pword) => (dispatch) => {
     }).then((r)=>{
         //Get user profile information TODO: Test this works
         console.log("Success path, getting profile info")
-        profileActions.setUserInfoFromServer(Uname)(dispatch)
-            
+        if(!isTest)
+            profileActions.setUserInfoFromServer(Uname)(dispatch)
     }).then((r)=>{
+        console.log("In here, end of login")
         dispatch({type: LOGIN, name: Uname, password: Pword})
     })
 }
