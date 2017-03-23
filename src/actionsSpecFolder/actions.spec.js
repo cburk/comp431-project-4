@@ -1,6 +1,7 @@
 import { expect } from 'chai'
 import mockery from 'mockery'
 import fetch, { mock } from 'mock-fetch'
+import Reducer from '../reducers.js'
 
 let Action, actions
 beforeEach(() => {
@@ -74,4 +75,13 @@ it('resource should give me the http error', (done) => {
         expect(r.errorMsg).to.eql(errorMsg)
     }).then(done)
     .catch(done)
+})
+
+it('should update error message (for displaying error mesage to user)', (done) => {
+    const origState = {errorMsg: 'All good here'}
+    const desiredError = "Error!"
+    const newState = Reducer(origState, {type: actions.ERROR, msg: desiredError})
+    console.log(newState)
+    expect(newState.errorMsg).to.eql(desiredError)
+    done()
 })

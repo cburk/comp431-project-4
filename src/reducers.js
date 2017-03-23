@@ -31,6 +31,7 @@ const Reducer = (state = {
     curUserStatus: userStatus,
     friendStatuses: friendStatuses
 }, action) => {
+    console.log("In reducer area")
     switch (action.type) {
         case ArticleActions.ActionTypes.UPDATE_ARTICLES:
             console.log("Reducer found articles: ", action)
@@ -77,6 +78,7 @@ const Reducer = (state = {
             //TODO Later: Just hardcoded other info like the image, status
             return { ...state, friendStatuses: [ ...state.friendStatuses, {person: action.person, status: 'HARDCODED NEW FRIEND STATUS', image: 'gdp_breakdown.gif'} ] }
         default:
+            console.log("Fell through to default state")
             return state
     }
 }
