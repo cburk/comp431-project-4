@@ -2,6 +2,7 @@ import { expect } from 'chai'
 import mockery from 'mockery'
 import fetch, { mock } from 'mock-fetch'
 import Reducer from '../reducers.js'
+import * as ArticleActions from '../main/articleActions'
 
 let Action, actions
 beforeEach(() => {
@@ -56,3 +57,26 @@ it('should initialize state', (done) => {
     done()
 })
 
+it('should set the articles', (done) => {
+    const origState = {articlesList: []}
+    const newArticles = [{a1: "text!"}, {a2: "anutha one"}]
+    const newState = Reducer(origState, {type: ArticleActions.ActionTypes.UPDATE_ARTICLES, articles: newArticles})
+    expect(newState.articlesList).to.eql(newArticles)
+    done()
+})
+
+//Searchstring is not saved in this implementation
+it('should set the search keyword', (done) => {
+    done()
+})
+
+it('should filter displayed articles by the search keyword', (done) => {
+    const articlesList = [{text: 'goodness', author: 'not matching'}, {text: 'not matching', author: 'good'}, {text: 'zero', author: 'matches'}]
+    const origState = {articlesList}
+    const newState = Reducer(origState, {type: ArticleActions.ActionTypes.SEARCH, searchString: 'good'})
+    console.log(newState)
+    expect(newState.articlesList[0]).to.eql(articlesList[0])
+    expect(newState.articlesList[1]).to.eql(articlesList[1])
+    expect(newState.articlesList.length).to.eql(2)
+    done()
+})
