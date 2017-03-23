@@ -77,6 +77,29 @@ it('resource should give me the http error', (done) => {
     .catch(done)
 })
 
+it('should update error message (for displaying error mesage to user)', (done) => {
+    const eMsg = "Wrong!"
+    expect(actions.updateError(eMsg).msg).to.eql(eMsg)
+    expect(actions.updateError(eMsg).type).to.eql(actions.ERROR)
+    done()
+})
+it('should update success message (for displaying success message to user)', (done) => {
+    const text = "Sucess!"
+    expect(actions.updateText(text).text).to.eql(text)
+    expect(actions.updateText(text).type).to.eql(actions.UPDATE_TEXT)
+    done()
+})
+it('should navigate (to profile, main, or landing)', (done) => {
+    const pages = [actions.MAIN_PAGE, actions.LANDING_PAGE, actions.PROFILE_PAGE]
+    pages.map((page) => {
+        actions.navigateTo(page)((dis)=>{
+            expect(dis.page).to.eql(page)
+            expect(dis.type).to.eql(actions.ActionTypes.NAVIGATE_TO)
+        })
+    })
+    done()
+})
+
 //TODO: This needs to go in reducers file
 it('should update error message (for displaying error mesage to user)', (done) => {
     const origState = {errorMsg: 'All good here'}

@@ -43,6 +43,8 @@ export const ActionTypes = {
     LOGOUT: 'LOGOUT'
 }
 
+
+
 const uNameRE = /[A-Za-z][A-Za-z1-9]+/
 const emailRE = /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/
 const phoneRE = /\d\d\d[\-]\d\d\d[\-]\d\d\d\d/
@@ -100,6 +102,12 @@ export const updateText = (text) => {
         return { type: UPDATE_TEXT, text }
     }
     return { type: ERROR, message: 'Text must be longer than 5 characters'}
+}
+
+
+
+export const updateError = (msg) => {
+    return {type: ERROR, msg}
 }
 
 export const navMain = () => {

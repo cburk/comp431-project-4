@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome 56.0.2924 (Mac OS X 10.11.6)" package="" timestamp="2017-03-23T20:51:30" id="0" hostname="Christians-MacBook-Air-2.local" tests="10" errors="0" failures="0" time="0.042">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"/>
+  </properties>
+  <testcase name=" resource should be a resource" time="0.005" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" resource should be postable" time="0.001" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" resource should give me the http error" time="0.001" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should update error message (for displaying error mesage to user)" time="0.002" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should login the user" time="0.005" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should not log in an invalid user" time="0.005" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should logout the user" time="0.002" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should fetch articles (mocked request)" time="0.004" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should fetch the user's proile information" time="0.002" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should update headline" time="0.015" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <system-out>
+    <![CDATA[Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Inside resource resource'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/somePage'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'GET', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/somePage'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'POST', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Inside error resource test'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/somePage'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'GET somePage 404: errorMsg'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'R is, ', Object{errorMsg: '404: errorMsg', result: 'Fail'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In reducer area'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Are we here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'What's the error look like? ', Object{type: 'ERROR', msg: 'Error!'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{errorMsg: 'Error!'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Inside loginKUser'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Found json: ', Object{username: 'asd1', password: 'ok-pass-word'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/login'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'POST', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Back in login,', Object{username: 'asd1', result: 'success'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'success'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In success path?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Success path, getting articles'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Success path, getting profile info'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In here, end of login'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Action returned: ', Object{type: 'LOGIN', name: 'asd1', password: 'ok-pass-word'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Inside loginKUser'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Found json: ', Object{username: 'incorrectUname', password: 'aaa-aaa-aaa'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Inside loginKUser'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Found json: ', Object{username: 'asd1', password: 'wrong-password'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Inside loginKUser'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Found json: ', Object{username: 'nex1', password: 'non-existent-combo'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/login'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'POST login 404: errorMsg'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Back in login,', Object{errorMsg: '404: errorMsg', result: 'Fail'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Fail'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Invalid login part 1'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Invalid login part', Object{type: 'ERROR', errorMsg: '404: errorMsg'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Success path, getting profile info'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: '
+
+We're in setuser info
+
+'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: '
+
+We're in setuser info
+
+'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/email'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/dob'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/zipcode'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/avatars'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/headlines'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In here, end of login'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/logout'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'PUT', headers: Object{Content-Type: 'text/plain', get: (key) => options.headers[key]}, text: () => new Promise((resolve, reject) => resolve(options.text)), status: 200, json: () => new Promise((resolve, reject) => resolve(options.json))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Logging out requested, returned w/: '
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'OK'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Should get article'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{UPDATE_TEXT: 'UPDATE_TEXT', ERROR: 'ERROR', MAIN_PAGE: 'MAIN_PAGE', PROFILE_PAGE: 'PROFILE_PAGE', LANDING_PAGE: 'LANDING_PAGE', LOGOUT: 'LOGOUT', url: 'https://webdev-dummy.herokuapp.com', resource: function resource(method, endpoint, payload) { ... }, fullPagesList: [Object{pageType: ..., description: ...}, Object{pageType: ..., description: ...}, Object{pageType: ..., description: ...}], ActionTypes: Object{UPDATE_TEXT: 'UPDATE_TEXT', NAVIGATE_TO: 'NAVIGATE_TO', LOGOUT: 'LOGOUT'}, registerUser: function registerUser(uName, pWord, email, phone, dob, zipcode) { ... }, logoutUser: function logoutUser() { ... }, updateText: function updateText(text) { ... }, navMain: function navMain() { ... }, navProfile: function navProfile() { ... }, logout: function logout() { ... }, navigateTo: function navigateTo(pageType) { ... }}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'After mocking'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'articles/steve'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/articles/steve'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'GET', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'inside  get articles request,', Object{articles: [Object{_id: ..., text: ..., date: ..., img: ..., comments: ..., author: ...}]}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Finished call to article actions test'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{type: 'UPDATE_ARTICLES', articles: [Object{_id: ..., text: ..., date: ..., img: ..., comments: ..., author: ...}]}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/email'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/dob'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/zipcode'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/avatars'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/headlines'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/headline'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'GET', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'GET', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'GET', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'GET', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'PUT', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'email', '?,', Object{email: 'loginTest', name: ''}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'dob', '?,', Object{dob: 'asdf', name: ''}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'dob path, name? ', ''
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'zipcode', '?,', Object{zipcode: 'success', name: ''}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'avatar', '?,', Object{avatars: [Object{avatar: ..., name: ...}]}
+
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>
