@@ -23,8 +23,7 @@ afterEach(() => {
   }
 })
 
-/*
-//TODO: Ask about this, because I think it doesn't work asynchronously
+
 it("should fetch the user's proile information", (done) => {
   // the result from the mocked AJAX calls
   const name = 'username'
@@ -34,42 +33,62 @@ it("should fetch the user's proile information", (done) => {
   const dob = 'asdf'
   const avatar = 'whatever'
 
+  //DIdn't want to do things this way, but all TA and I could come up w/
+  //Testing complex  actions asynchronously wasn't working, so just facotring out all subcalls
+  //and seeing if they perform as wanted
   mock(`${actions.url}/email`, {
   	method: 'GET',
   	headers: {'Content-Type':'application/json'},
   	json: { email, name }
   })
+  
+  profileActions.setEmailInfoFromServer(name)(
+    action => {
+        expect(action.email).to.eql(email)
+        expect(action.type).to.eql(profileActions.ActionTypes.SET_USER_INFO)
+    })
+
+  
   mock(`${actions.url}/dob`, {
   	method: 'GET',
   	headers: {'Content-Type':'application/json'},
   	json: { dob, name }
   })
+  
+  profileActions.setDobInfoFromServer(name)(
+    action => {
+        expect(action.dob).to.eql(dob)
+        expect(action.type).to.eql(profileActions.ActionTypes.SET_USER_INFO)
+    })
+  
   mock(`${actions.url}/zipcode`, {
   	method: 'GET',
   	headers: {'Content-Type':'application/json'},
   	json: { zipcode, name }
   })
+  
+  profileActions.setZipcodeInfoFromServer(name)(
+    action => {
+        expect(action.zipcode).to.eql(zipcode)
+        expect(action.type).to.eql(profileActions.ActionTypes.SET_USER_INFO)
+    })
+
   mock(`${actions.url}/avatar`, {
   	method: 'GET',
   	headers: {'Content-Type':'application/json'},
   	json: { avatars: [{avatar, name}]}
   })
-
-  //Note: Solution here based on Scott's piazza post   
-  const infoToBeUpdated = ['avatar', 'zipcode', 'dob', 'email', 'avatar', 'name', 'password']
-  const infoThatWas = []
-  profileActions.setUserInfoFromServer(name, password)(
-    action => {
-        console.log("found ", action)
-        console.log("SetUserInfo test response: ", action)
-        infoThatWas.push(action.info)
-        console.log("pushed")
-  	})
   
-  expect(infoThatWas.length).to.eql(5)
+  profileActions.setAvatarInfoFromServer(name)(
+    action => {
+        expect(action.avatar).to.eql(avatar)
+        expect(action.type).to.eql(profileActions.ActionTypes.SET_USER_INFO)
+    })  
 
+  
+  done()
+  
 })
-*/
 
 
 it("should update headline", (done) => {

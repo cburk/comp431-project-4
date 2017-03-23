@@ -22,24 +22,29 @@ export const updateHeadline = (headline) => (dispatch) => {
 
 //To be called immediately after logged in
 export const setUserInfoFromServer = (name, password) => (dispatch) => {
-    let userInfo = {name, password}
     //Immediately set name, password
-    dispatch({type: ActionTypes.SET_USER_INFO, info: {name, password}})
+    dispatch({type: ActionTypes.SET_USER_INFO, info: {name}})
+    dispatch({type: ActionTypes.SET_USER_INFO, info: {password}})
     
-    const dataPoints = ['email', 'dob', 'zipcode']
-    //Get user's email, dob, zipcode
-    dataPoints.map((dType) => {
-        Actions.resource('GET', dType)
-            .then((r)=>{
-            console.log(dType, "?,", r)
-            if(r.name == name){
-                console.log("Email, dob, etc? ", r[dType.valueOf()])
-                const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {}}
-                thisDispatch.info[dType] = r[dType]
-                dispatch(thisDispatch)
-            }
-        })
+    // Note: Didn't want to do it this way, but after speaking w/ TA only way we could find to test this
+    setEmailInfoFromServer(name)
+    setDobInfoFromServer(name)
+    setZipcodeInfoFromServer(name)
+    setAvatarInfoFromServer(name)
+}
+
+export const setEmailInfoFromServer = (name) => (dispatch) => {
+    Actions.resource('GET', 'email')
+        .then((r)=>{
+        console.log('email', "?,", r)
+        if(r.name == name){
+            const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {email: r.email}}
+            dispatch(thisDispatch)
+        }
     })
+}
+
+export const setAvatarInfoFromServer = (name) => (dispatch) => {
     //Process for avatar slightly different
     Actions.resource('GET', 'avatar')
         .then((r)=>{
@@ -48,6 +53,30 @@ export const setUserInfoFromServer = (name, password) => (dispatch) => {
             dispatch({type: ActionTypes.SET_USER_INFO, info: r.avatars[0]})
     })
 }
+
+export const setDobInfoFromServer = (name) => (dispatch) => {
+    Actions.resource('GET', 'dob')
+        .then((r)=>{
+        console.log('dob', "?,", r)
+        if(r.name == name){
+            const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {dob: r.dob}}
+            dispatch(thisDispatch)
+        }
+    })
+}
+
+export const setZipcodeInfoFromServer = (name) => (dispatch) => {
+    Actions.resource('GET', 'zipcode')
+        .then((r)=>{
+        console.log('zipcode', "?,", r)
+        if(r.name == name){
+            const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {zipcode: r.zipcode}}
+            dispatch(thisDispatch)
+        }
+    })
+}
+
+
 
 export const updateUserInfo = (displayName, email, phone, zipcode) => {
     let updateObj = {}
