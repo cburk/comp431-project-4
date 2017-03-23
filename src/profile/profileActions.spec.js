@@ -32,6 +32,7 @@ it("should fetch the user's proile information", (done) => {
   const zipcode = 'success'
   const dob = 'asdf'
   const avatar = 'whatever'
+  const headline = 'h'
 
   //DIdn't want to do things this way, but all TA and I could come up w/
   //Testing complex  actions asynchronously wasn't working, so just facotring out all subcalls
@@ -82,6 +83,18 @@ it("should fetch the user's proile information", (done) => {
   profileActions.setAvatarInfoFromServer(name)(
     action => {
         expect(action.avatar).to.eql(avatar)
+        expect(action.type).to.eql(profileActions.ActionTypes.SET_USER_INFO)
+    })  
+
+  mock(`${actions.url}/avatars`, {
+  	method: 'GET',
+  	headers: {'Content-Type':'application/json'},
+  	json: { avatars: [{avatar, name}]}
+  })
+  
+  profileActions.setHeadlineInfoFromServer(name)(
+    action => {
+        expect(action.headline).to.eql(headline)
         expect(action.type).to.eql(profileActions.ActionTypes.SET_USER_INFO)
     })  
 

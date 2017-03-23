@@ -29,6 +29,7 @@ export const setUserInfoFromServer = (name) => (dispatch) => {
     setDobInfoFromServer(name)(dispatch)
     setZipcodeInfoFromServer(name)(dispatch)
     setAvatarInfoFromServer(name)(dispatch)
+    setHeadlineInfoFromServer(name)(dispatch)
 }
 
 export const setEmailInfoFromServer = (name) => (dispatch) => {
@@ -39,6 +40,16 @@ export const setEmailInfoFromServer = (name) => (dispatch) => {
             const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {email: r.email}}
             dispatch(thisDispatch)
         }
+    })
+}
+
+export const setHeadlineInfoFromServer = (name) => (dispatch) => {
+    //Process for avatar slightly different
+    Actions.resource('GET', 'headlines')
+        .then((r)=>{
+        console.log("headline", "?,", r)
+        if(r.headlines.length == 1)
+            dispatch({type: ActionTypes.SET_USER_INFO, info: r.headlines[0]})
     })
 }
 
