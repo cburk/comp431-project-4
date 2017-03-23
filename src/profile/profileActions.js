@@ -2,7 +2,6 @@ import * as Actions from '../actions'
 
 export const ActionTypes = {
     SET_USER_INFO: 'SET_USER_INFO',
-    UPDATE_INFO: 'UPDATE_INFO',
     UPDATE_HEADLINE: 'UPDATE_HEADLINE'
 }
 
@@ -21,23 +20,22 @@ export const updateHeadline = (headline) => (dispatch) => {
 
 
 //To be called immediately after logged in
-export const setUserInfoFromServer = (name, password) => (dispatch) => {
-    //Immediately set name, password
-    dispatch({type: ActionTypes.SET_USER_INFO, info: {name}})
-    dispatch({type: ActionTypes.SET_USER_INFO, info: {password}})
+export const setUserInfoFromServer = (name) => (dispatch) => {
+    console.log("\n\nWe're in setuser info\n\n")
+    console.log("\n\nWe're in setuser info\n\n")
     
     // Note: Didn't want to do it this way, but after speaking w/ TA only way we could find to test this
-    setEmailInfoFromServer(name)
-    setDobInfoFromServer(name)
-    setZipcodeInfoFromServer(name)
-    setAvatarInfoFromServer(name)
+    setEmailInfoFromServer(name)(dispatch)
+    setDobInfoFromServer(name)(dispatch)
+    setZipcodeInfoFromServer(name)(dispatch)
+    setAvatarInfoFromServer(name)(dispatch)
 }
 
 export const setEmailInfoFromServer = (name) => (dispatch) => {
     Actions.resource('GET', 'email')
         .then((r)=>{
         console.log('email', "?,", r)
-        if(r.name == name){
+        if(r.username == name){
             const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {email: r.email}}
             dispatch(thisDispatch)
         }
@@ -46,7 +44,7 @@ export const setEmailInfoFromServer = (name) => (dispatch) => {
 
 export const setAvatarInfoFromServer = (name) => (dispatch) => {
     //Process for avatar slightly different
-    Actions.resource('GET', 'avatar')
+    Actions.resource('GET', 'avatars')
         .then((r)=>{
         console.log("avatar", "?,", r)
         if(r.avatars.length == 1)
@@ -58,8 +56,11 @@ export const setDobInfoFromServer = (name) => (dispatch) => {
     Actions.resource('GET', 'dob')
         .then((r)=>{
         console.log('dob', "?,", r)
-        if(r.name == name){
+        console.log('dob path, name? ', name)
+        if(r.username == name){
+            console.log("Dob path, got dispatch? ")
             const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {dob: r.dob}}
+            console.log("Dob path, got dispatch? ", thisDispatch)
             dispatch(thisDispatch)
         }
     })
@@ -69,7 +70,7 @@ export const setZipcodeInfoFromServer = (name) => (dispatch) => {
     Actions.resource('GET', 'zipcode')
         .then((r)=>{
         console.log('zipcode', "?,", r)
-        if(r.name == name){
+        if(r.username == name){
             const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {zipcode: r.zipcode}}
             dispatch(thisDispatch)
         }
@@ -107,6 +108,7 @@ export const updateUserInfo = (displayName, email, phone, zipcode) => {
         else
             updateObj["zipcode"] = zipcode
     }
-       
-    return {type: ActionTypes.UPDATE_INFO, updates: updateObj}
+      
+    //TODO: use SET_USER_INFO instead, resource/fetches and whatnot
+    //return {type: ActionTypes.UPDATE_INFO, updates: updateObj}
 }

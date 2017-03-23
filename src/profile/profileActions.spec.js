@@ -26,7 +26,7 @@ afterEach(() => {
 
 it("should fetch the user's proile information", (done) => {
   // the result from the mocked AJAX calls
-  const name = 'username'
+  const username = 'username'
   const password = 'whatever'
   const email = 'loginTest'
   const zipcode = 'success'
@@ -73,7 +73,7 @@ it("should fetch the user's proile information", (done) => {
         expect(action.type).to.eql(profileActions.ActionTypes.SET_USER_INFO)
     })
 
-  mock(`${actions.url}/avatar`, {
+  mock(`${actions.url}/avatars`, {
   	method: 'GET',
   	headers: {'Content-Type':'application/json'},
   	json: { avatars: [{avatar, name}]}

@@ -20,9 +20,9 @@ export const FollowingList = ({ curUserStatus, updateStatus }) => {
     
     return (
     <div id="headline">
-        <img src={curUserStatus.image}></img>
-        <h5>Logged in as: {curUserStatus.person}</h5>
-        <p>Status: {curUserStatus.status}</p>        
+        <img src={curUserStatus.avatar}></img>
+        <h5>Logged in as: {curUserStatus.name}</h5>
+        <p>Status: {curUserStatus.headline}</p>        
         <input type="text" placeholder="Enter new status here" ref={(node) => newStatus = node} />
         <button onClick={_updateStatus}>Update Status</button>
     </div>)
@@ -30,6 +30,6 @@ export const FollowingList = ({ curUserStatus, updateStatus }) => {
 
 
 export default connect(
-    (state) => ({ curUserStatus: state.curUserStatus }),
+    (state) => ({ curUserStatus: state.curUser }),
     (dispatch) => ({ updateStatus: (newStat) => ProfileActions.updateHeadline(newStat)(dispatch) })
 )(FollowingList)

@@ -21,14 +21,15 @@ const Reducer = (state = {
     location: Actions.LANDING_PAGE,
     text: 'State originates in the reducer',
     message: '',
-    curUser: {name: '', displayName: 'No display name set', email: 'asdf@stuff.com', phone: '123-456-7891', dob: 'N/A', zipcode: '14253'},
-    betterCurUser: {name: '', email: '', phone: '', dob: '', zipcode: '', avatar: '', headline: '', password: ''},
+    //curUser: {name: '', displayName: 'No display name set', email: 'asdf@stuff.com', phone: '123-456-7891', dob: 'N/A', zipcode: '14253'},
+    curUser: {name: '', email: '', phone: '', dob: '', zipcode: '', avatar: '', headline: '', password: '', headline: ''},
     //}
     //uName: '',
     navPagesList: [],
     articlesList: fullArticlesList,
     nextArticleID: fullArticlesList.length + 1,
-    curUserStatus: userStatus,
+    // Now replaced w/ headline as curUser field
+    //curUserStatus: userStatus,
     friendStatuses: friendStatuses
 }, action) => {
     console.log("In reducer area")
@@ -58,9 +59,9 @@ const Reducer = (state = {
             console.log("Action: ", action)
             console.log("Before set info: ", state)
             //console.log("After set info: ", { ...state, betterCurUser: {...state.betterCurUser, action.info}})
-            return { ...state, betterCurUser: {...state.betterCurUser, ...action.info}}
-        case ProfileActions.ActionTypes.UPDATE_INFO:
-            return { ...state, curUser: {...state.curUser, ...action.updates} }
+            return { ...state, curUser: {...state.curUser, ...action.info}}
+        //case ProfileActions.ActionTypes.UPDATE_INFO:
+        //    return { ...state, curUser: {...state.curUser, ...action.updates} }
         case ArticleActions.ActionTypes.SEARCH:
             //TODO: Should it do similar search matching for author name, not just full match?
             return { ...state, articlesList: state.articlesList.filter((article) => {
@@ -71,7 +72,7 @@ const Reducer = (state = {
             return { ...state, articlesList: newArticles, nextArticleID: action.id + 1 }
         case ProfileActions.ActionTypes.UPDATE_HEADLINE:
             //TODO: Maybe one day resolve the headline/status conflict
-            return { ...state, curUserStatus: { ...userStatus, status: action.headline } }
+            return { ...state, curUser: { ...state.curUser, headline: action.headline } }
         case StatusActions.ActionTypes.REMOVE_FRIEND:
             return { ...state, friendStatuses: state.friendStatuses.filter((fStat)=>{return fStat.person != action.person}) }
         case StatusActions.ActionTypes.ADD_FRIEND:

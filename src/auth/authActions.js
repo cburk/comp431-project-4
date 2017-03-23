@@ -31,15 +31,21 @@ export const loginUser = (Uname, Pword) => (dispatch) => {
         console.log(r.result)
         if(r.result == 'success'){
             console.log("In success path?")
-            dispatch({type: LOGIN, username: r.username})
             //Get all articles for feed
+            console.log("Success path, getting articles")
             articleActions.getArticles()(dispatch)
-            //Get user profile information TODO: Test this works
-            profileActions.setUserInfoFromServer(Uname, Pword)
         }else{
             console.log("Invalid login part 1")
             console.log("Invalid login part", {type: actions.ERROR, errorMsg: r.errorMsg})
             dispatch({type: actions.ERROR, msg: r.errorMsg})
+            return
         }
+    }).then((r)=>{
+        //Get user profile information TODO: Test this works
+        console.log("Success path, getting profile info")
+        profileActions.setUserInfoFromServer(Uname)(dispatch)
+            
+    }).then((r)=>{
+        dispatch({type: LOGIN, name: Uname, password: Pword})
     })
 }
