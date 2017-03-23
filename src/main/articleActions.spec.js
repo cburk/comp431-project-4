@@ -52,3 +52,10 @@ it('should fetch articles (mocked request)', (done) => {
 
 })
 
+it('should update the search keyword', (done) => {
+    const query = "qry"
+    expect(articleActions.searchArticles(query).type).to.eql(articleActions.ActionTypes.SEARCH)
+    expect(articleActions.searchArticles(query).searchString).to.eql(query) 
+    done()
+})
+

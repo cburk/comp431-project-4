@@ -19,7 +19,7 @@ const resetState = () => {
 const Reducer = (state = {
     errorMsg: '',
     location: Actions.LANDING_PAGE,
-    text: 'State originates in the reducer',
+    text: '',
     message: '',
     //curUser: {name: '', displayName: 'No display name set', email: 'asdf@stuff.com', phone: '123-456-7891', dob: 'N/A', zipcode: '14253'},
     curUser: {name: '', email: '', phone: '', dob: '', zipcode: '', avatar: '', headline: '', password: '', headline: ''},

@@ -99,26 +99,3 @@ it('should navigate (to profile, main, or landing)', (done) => {
     })
     done()
 })
-
-//TODO: This needs to go in reducers file
-it('should update error message (for displaying error mesage to user)', (done) => {
-    const origState = {errorMsg: 'All good here'}
-    const desiredError = "Error!"
-    const newState = Reducer(origState, {type: actions.ERROR, msg: desiredError})
-    console.log(newState)
-    expect(newState.errorMsg).to.eql(desiredError)
-    done()
-})
-
-//Question: Is this asking for what happens w/ an initialize command?  Or what the default state is? 
-//Think this is ok
-/*
-it('should initialize state', (done) => {
-    const desiredError = "Error!"
-    const newState = Reducer(undefined, {type: actions.ERROR, msg: desiredError})
-    console.log(newState)
-    console.log("Just finished default test")
-    expect(newState.errorMsg).to.eql(desiredError)
-
-})
-*/
