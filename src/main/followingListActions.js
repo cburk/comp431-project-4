@@ -1,6 +1,9 @@
 export const FOLLOW_PERSON_LIST_RAW = 'F_P_L_R'
 export const FOLLOW_PERSON_AVATARS = 'F_P_A'
 export const FOLLOW_PERSON_HEADLINES = 'F_P_H'
+export const FINALIZE_FOLLOW_LIST = 'F_F_L'
+export const REMOVE_FRIEND = 'REMOVE_FRIEND'
+export const ADD_FRIEND = 'ADD_FRIEND'
 import * as Actions from '../actions'
 
 export const setFollowingListFromServer = () => (dispatch) => {
@@ -29,7 +32,6 @@ export const setFollowingListFromServer = () => (dispatch) => {
         getFollowingListAvatars(urlSuffix)(dispatch)
         
     })
-    //TODO: Dispatch collate and update command?
 }
 
 export const getFollowingListHeadlines = (urlSuffix) => (dispatch) => {
@@ -43,10 +45,18 @@ export const getFollowingListAvatars = (urlSuffix) => (dispatch) => {
     Actions.resource('GET', 'avatars/'+urlSuffix)
         .then((act) => {
         dispatch({type: FOLLOW_PERSON_AVATARS, list: act.avatars})
+    }).then(() => {
+        //Finally, create the actual list that's used by the 
+        dispatch({type: FINALIZE_FOLLOW_LIST})
     })
 }
 
 
-export const addPersonFollowing = (person) => (dispatch) => {
-    //TODO
+export const removeFriend = (person) => (dispatch) => {
+    // TODO: Later, same thing as in updateCurUSer?
+    return {type: ActionTypes.REMOVE_FRIEND, person: person}
+}
+
+export const addFriend = (person) => (dispatch) => {
+    return {type: ActionTypes.ADD_FRIEND, person: person}
 }

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import * as StatusActions from './statusActions'
+import * as FollowingListActions from './followingListActions'
 
 /* 
 Each users status
@@ -27,7 +27,7 @@ export default connect(
     (state) => ({  }),
     (dispatch) => {
         return {
-            removeFriend : (person) => dispatch(StatusActions.removeFriend(person))
+            removeFriend : (person) => FollowingListActions.removeFriend(person)(dispatch)
         }
     }        
 )(UserStatus)

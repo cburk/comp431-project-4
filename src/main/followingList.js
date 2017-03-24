@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import UserStatus from './userStatus'
 
-import * as StatusActions from './statusActions'
+import * as FollowingListActions from './followingListActions'
 
 export const FollowingList = ({ friendStatuses, addFriend }) => {    
 
@@ -35,5 +35,5 @@ export const FollowingList = ({ friendStatuses, addFriend }) => {
 
 export default connect(
     (state) => ({ friendStatuses : state.friendStatuses }),
-    (dispatch) => ({ addFriend : (friendName) => dispatch(StatusActions.addFriend(friendName)) })
+    (dispatch) => ({ addFriend : (friendName) => FollowingListActions.addFriend(friendName)(dispatch) })
 )(FollowingList)

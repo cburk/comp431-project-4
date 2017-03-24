@@ -2,7 +2,6 @@ import * as Actions from './actions'
 import * as AuthActions from './auth/authActions'
 import * as ProfileActions from './profile/profileActions'
 import * as ArticleActions from './main/articleActions'
-import * as StatusActions from './main/statusActions'
 import * as FollowingListActions from './main/followingListActions'
 
 // Hard coded values
@@ -12,6 +11,7 @@ import * as FollowingListActions from './main/followingListActions'
 const friendStatuses = []
 // For use creating statuses objects, whcih are ultimately converted to statuses list when finished
 let tempFriendStatuses = {}
+let tempStatusList = []
 let fullArticlesList = []
 
 const resetState = () => {
@@ -60,8 +60,12 @@ const Reducer = (state = {
                 tempFriendStatuses[pair.username].headline = pair.headline
             })
             return {...state, tempFriendStatusesState: tempFriendStatuses }
-
-            
+        case FollowingListActions.FINALIZE_FOLLOW_LIST:
+            tempStatusList = []
+            Object.keys(state.tempFriendStatusesState).map((name) => {
+                tempStatusList.push({person: name, status: state.tempFriendStatusesState[name].headline, image: state.tempFriendStatusesState[name].avatar})
+            })
+            return {...state, friendStatuses: tempStatusList}
         case ArticleActions.ActionTypes.UPDATE_ARTICLES:
             console.log("Reducer found articles: ", action)
             // Update base list to be this user's articles
@@ -101,9 +105,9 @@ const Reducer = (state = {
         case ProfileActions.ActionTypes.UPDATE_HEADLINE:
             //TODO: Maybe one day resolve the headline/status conflict
             return { ...state, curUser: { ...state.curUser, headline: action.headline } }
-        case StatusActions.ActionTypes.REMOVE_FRIEND:
+        case FollowingListActions.REMOVE_FRIEND:
             return { ...state, friendStatuses: state.friendStatuses.filter((fStat)=>{return fStat.person != action.person}) }
-        case StatusActions.ActionTypes.ADD_FRIEND:
+        case FollowingListActions.ADD_FRIEND:
             //TODO Later: Just hardcoded other info like the image, status
             return { ...state, friendStatuses: [ ...state.friendStatuses, {person: action.person, status: 'HARDCODED NEW FRIEND STATUS', image: 'gdp_breakdown.gif'} ] }
         default:
