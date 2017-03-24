@@ -47,7 +47,7 @@ export default connect(
     (dispatch) => {
         return {
             // TODO: Need to allow image to be uploaded as well
-            addNewArticle: (id, author, text) => dispatch(ArticleActions.addNewArticle(id, author, text))
+            addNewArticle: (id, author, text) => ArticleActions.addNewArticle(id, author, text)(dispatch)
         }
     }
 )(NewArticle)
