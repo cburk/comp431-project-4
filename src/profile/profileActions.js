@@ -8,6 +8,7 @@ export const ActionTypes = {
 const emailRE = /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/
 const phoneRE = /\d\d\d[\-]\d\d\d[\-]\d\d\d\d/
 const zipcodeRE = /[0-9]{5}/
+const pWordRE = /[a-zA-Z0-9]+\-[a-zA-Z0-9]+\-[a-zA-Z0-9]+/
 
 export const updateHeadline = (headline) => (dispatch) => {
     Actions.resource('PUT', 'headline', {headline})
@@ -90,36 +91,63 @@ export const setZipcodeInfoFromServer = (name) => (dispatch) => {
 
 
 
-export const updateUserInfo = (displayName, email, phone, zipcode) => {
+export const updateUserInfo = (displayName, email, phone, zipcode, password) => (dispatch) =>{
     let updateObj = {}
     // No extra validation for displayName, don't think there are rules governing
-    if(displayName)
-        updateObj["displayName"] = displayName
+    // In the future, might want to do something w/ display name, I don't see how it factors in now
+    //if(displayName)
+        //setInfoOnServer()
+        //updateObj["displayName"] = displayName
+    console.log("update user info called")
     
     // If email is not blank (i.e. they want to change it), and ill formed, error
     if(email){
         if(emailRE.exec(email) != email)
             return {type: Actions.ERROR, msg: "ERROR: Invalid email format: " + email}
         else
-            updateObj["email"] = email
+            setInfoOnServer('email', email)(dispatch)
+            //updateObj["email"] = email
     }
     
     // Validate phone number, if user tried to change it
     if(phone){
         if(phoneRE.exec(phone) != phone)
             return {type: Actions.ERROR, msg: "ERROR: Invalid phone format: " + phone}
-        else
-            updateObj["phone"] = phone
+        else{
+            //Special case, no part of server seems to have phone info, so just send a dispatch message
+            dispatch({type: ActionTypes.SET_USER_INFO, info: {phone: phone}})
+        }
+                
+            //updateObj["phone"] = phone
     }
 
     // Validate zipcode, if user tried to change it
     if(zipcode){
+        console.log("Found zipcode entered")
         if(zipcodeRE.exec(zipcode) != zipcode)
             return {type: Actions.ERROR, msg: "ERROR: Invalid zipcode format: " + zipcode}
-        else
-            updateObj["zipcode"] = zipcode
+        else{
+            console.log("Tryna set")
+            setInfoOnServer('zipcode', zipcode)(dispatch)
+        }
     }
-      
-    //TODO: use SET_USER_INFO instead, resource/fetches and whatnot
-    //return {type: ActionTypes.UPDATE_INFO, updates: updateObj}
+
+    if(password){
+        if(pWordRE.exec(password) != password)
+            return {type: Actions.ERROR, msg: "ERROR: Invalid password format: " + password}
+        else
+            setInfoOnServer('password', password)(dispatch)
+    }
+}
+
+
+export const setInfoOnServer = (type, info) => (dispatch) => {
+    //Process for avatar slightly different
+    const jsonPayload = {[type]: info}
+    console.log("Sending json payload: ", jsonPayload)
+    Actions.resource('PUT', type, jsonPayload)
+        .then((r)=>{
+        console.log("response from server", "?,", r)
+        dispatch({type: ActionTypes.SET_USER_INFO, info: jsonPayload})
+    })
 }

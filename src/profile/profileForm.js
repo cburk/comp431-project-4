@@ -12,7 +12,11 @@ export const ProfileForm = ({ curUser, errorMsg, update }) => {
     let image;
     
     const _update = () => {
-        update(displName ? displName.value : '', email ? email.value : '', phone ? phone.value : '', zip ? zip.value : '')
+        console.log("In form, found zip? ", zip)
+        console.log(zip.value)
+        console.log(zip ? zip.value : '')
+        console.log("++++++++++++")
+        update(displName ? displName.value : '', email ? email.value : '', phone ? phone.value : '', zip ? zip.value : '', pWord ? pWord.value : '')
     }
         
     // TODO: Maybe li's for formatting?
@@ -35,5 +39,5 @@ export const ProfileForm = ({ curUser, errorMsg, update }) => {
 
 export default connect(
     (state) => ({ curUser: state.curUser, errorMsg: state.errorMsg }),
-    (dispatch) => ({ update: (displayName, email, phone, dob, zipcode) => dispatch(ProfileActions.updateUserInfo(displayName, email, phone, zipcode)) })
+    (dispatch) => ({ update: (displayName, email, phone, zipcode, password) => ProfileActions.updateUserInfo(displayName, email, phone, zipcode, password)(dispatch) })
 )(ProfileForm)
