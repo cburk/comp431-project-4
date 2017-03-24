@@ -22,7 +22,12 @@ export const searchArticles = (query) => {
 }
 
 // TODO: Probably need to add image eventually, maybe error checking for users?  etc.
-export const addNewArticle = (id, author, text) => {
-    //TODO: POST articles/
-    return {type: ActionTypes.ADD_ARTICLE, id: id, author: author, text: text}
+export const addNewArticle = (id, author, text) => (dispatch) => {
+    Actions.resource('POST', 'article', {text})
+    .then((r)=>{
+        console.log("inside post articles,", r)
+            return r.articles[0]
+        }).then((articleReturned) => {
+            dispatch({type: ActionTypes.ADD_ARTICLE, id: articleReturned._id, author: articleReturned.author, text: articleReturned.text})
+        })
 }

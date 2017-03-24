@@ -59,3 +59,25 @@ it('should update the search keyword', (done) => {
     done()
 })
 
+it('should dispatch actions to create a new article', (done) => {
+    const newArticle = "this is new text"
+    const articlesReturned = {articles: [{_id: 123, text: 'stuff', date: '123', author: 'steve'}]}
+    mock(`${actions.url}/article`, {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        json: articlesReturned
+    })
+    
+    articleActions.addNewArticle('whatever')(action => {
+        console.log("Finished call to article addition test")
+	  expect(action.type).to.eql(articleActions.ActionTypes.ADD_ARTICLE)
+	  expect(action.id).to.eql(articlesReturned.articles[0]._id)
+	  expect(action.author).to.eql(articlesReturned.articles[0].author)
+	  expect(action.text).to.eql(articlesReturned.articles[0].text)
+      
+	  done()
+  	})
+    
+    
+})
+
