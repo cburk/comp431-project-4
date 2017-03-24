@@ -8,7 +8,7 @@ export const Profile = ({ curUser }) => {
     <div>
         <h1>On profile page</h1>
         <Navbar />
-        <img src="forest.jpeg"/>
+        <img src={curUser.avatar}/>
         <ul>
             <li>Display Name: {curUser.displayName}</li>
             <li>Email: {curUser.email}</li>
