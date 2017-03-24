@@ -2,6 +2,7 @@
 import * as actions from '../actions'
 import * as articleActions from '../main/articleActions'
 import * as profileActions from '../profile/profileActions'
+import * as followingListActions from '../main/followingListActions'
 
 export const LOGIN = 'LOGIN'
 
@@ -9,7 +10,7 @@ const uNameRE = /[a-zA-Z][a-zA-Z][a-zA-Z][0-9]/
 const pWordRE = /[a-zA-Z0-9]+\-[a-zA-Z0-9]+\-[a-zA-Z0-9]+/
       
 // TODO: Get password
-export const loginUser = (Uname, Pword, isTest=false) => (dispatch) => {
+export const loginUser = (Uname, Pword, isTestOrError=false) => (dispatch) => {
     console.log("Inside loginKUser")
     //return { type: LOGIN, name: Uname }
     let thisJSON = {username: Uname, password: Pword}
@@ -25,6 +26,8 @@ export const loginUser = (Uname, Pword, isTest=false) => (dispatch) => {
         return
     }
     
+    const loginFailed = -1
+    
     actions.resource('POST', 'login', thisJSON)
         .then((r)=>{
         console.log("Back in login,", r)
@@ -33,21 +36,26 @@ export const loginUser = (Uname, Pword, isTest=false) => (dispatch) => {
             console.log("In success path?")
             //Get all articles for feed
             console.log("Success path, getting articles")
-            if(!isTest)  
+            if(!isTestOrError)  
                 articleActions.getArticles()(dispatch)
         }else{
             console.log("Invalid login part 1")
             console.log("Invalid login part", {type: actions.ERROR, errorMsg: r.errorMsg})
             dispatch({type: actions.ERROR, msg: r.errorMsg})
-            return
+            isTestOrError = true
         }
     }).then((r)=>{
-        //Get user profile information TODO: Test this works
+        console.log("Success path, getting following straightened out", r)
+        if(!isTestOrError)
+            followingListActions.setFollowingListFromServer()(dispatch)
+    }).then((r)=>{
         console.log("Success path, getting profile info")
-        if(!isTest)
+        if(!isTestOrError)
             profileActions.setUserInfoFromServer(Uname)(dispatch)
     }).then((r)=>{
         console.log("In here, end of login")
-        dispatch({type: LOGIN, name: Uname, password: Pword})
+        if(!isTestOrError){
+            dispatch({type: LOGIN, name: Uname, password: Pword})
+        }
     })
 }

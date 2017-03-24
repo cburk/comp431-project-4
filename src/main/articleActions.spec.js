@@ -81,3 +81,9 @@ it('should dispatch actions to create a new article', (done) => {
     
 })
 
+//TODO: Idk what this means
+it('should render articles', (done) => {
+    
+    done()
+})
+

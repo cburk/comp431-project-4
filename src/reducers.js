@@ -6,8 +6,10 @@ import * as StatusActions from './main/statusActions'
 
 // Hard coded values
 //const fullArticlesList = require('../data/ArticlesList.json')
-const userStatus = require('../data/UserStatus.json')
-const friendStatuses = require('../data/FriendStatusList.json')
+//const userStatus = require('../data/UserStatus.json')
+//const friendStatuses = require('../data/FriendStatusList.json')
+const friendStatuses = []
+
 let fullArticlesList = []
 
 const resetState = () => {
