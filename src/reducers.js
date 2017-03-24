@@ -3,6 +3,7 @@ import * as AuthActions from './auth/authActions'
 import * as ProfileActions from './profile/profileActions'
 import * as ArticleActions from './main/articleActions'
 import * as StatusActions from './main/statusActions'
+import * as FollowingListActions from './main/followingListActions'
 
 // Hard coded values
 //const fullArticlesList = require('../data/ArticlesList.json')

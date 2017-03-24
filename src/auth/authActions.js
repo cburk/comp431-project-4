@@ -10,7 +10,7 @@ const uNameRE = /[a-zA-Z][a-zA-Z][a-zA-Z][0-9]/
 const pWordRE = /[a-zA-Z0-9]+\-[a-zA-Z0-9]+\-[a-zA-Z0-9]+/
       
 // TODO: Get password
-export const loginUser = (Uname, Pword, isTestOrError=false) => (dispatch) => {
+export const loginUser = (Uname, Pword, isTest=false) => (dispatch) => {
     console.log("Inside loginKUser")
     //return { type: LOGIN, name: Uname }
     let thisJSON = {username: Uname, password: Pword}
@@ -27,6 +27,7 @@ export const loginUser = (Uname, Pword, isTestOrError=false) => (dispatch) => {
     }
     
     const loginFailed = -1
+    let isError = false
     
     actions.resource('POST', 'login', thisJSON)
         .then((r)=>{
@@ -36,25 +37,25 @@ export const loginUser = (Uname, Pword, isTestOrError=false) => (dispatch) => {
             console.log("In success path?")
             //Get all articles for feed
             console.log("Success path, getting articles")
-            if(!isTestOrError)  
+            if(!isTest)  
                 articleActions.getArticles()(dispatch)
         }else{
             console.log("Invalid login part 1")
             console.log("Invalid login part", {type: actions.ERROR, errorMsg: r.errorMsg})
             dispatch({type: actions.ERROR, msg: r.errorMsg})
-            isTestOrError = true
+            isError = true
         }
     }).then((r)=>{
         console.log("Success path, getting following straightened out", r)
-        if(!isTestOrError)
+        if(!isTest && !isError)
             followingListActions.setFollowingListFromServer()(dispatch)
     }).then((r)=>{
         console.log("Success path, getting profile info")
-        if(!isTestOrError)
+        if(!isTest && !isError)
             profileActions.setUserInfoFromServer(Uname)(dispatch)
     }).then((r)=>{
         console.log("In here, end of login")
-        if(!isTestOrError){
+        if(!isError){
             dispatch({type: LOGIN, name: Uname, password: Pword})
         }
     })
