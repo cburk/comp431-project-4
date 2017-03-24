@@ -10,7 +10,8 @@ import * as FollowingListActions from './main/followingListActions'
 //const userStatus = require('../data/UserStatus.json')
 //const friendStatuses = require('../data/FriendStatusList.json')
 const friendStatuses = []
-
+// For use creating statuses objects, whcih are ultimately converted to statuses list when finished
+let tempFriendStatuses = {}
 let fullArticlesList = []
 
 const resetState = () => {
@@ -28,6 +29,7 @@ const Reducer = (state = {
     curUser: {name: '', email: '', phone: '', dob: '', zipcode: '', avatar: '', headline: '', password: '', headline: ''},
     //}
     //uName: '',
+    tempFriendStatusesState: tempFriendStatuses,
     navPagesList: [],
     articlesList: fullArticlesList,
     nextArticleID: fullArticlesList.length + 1,
@@ -37,6 +39,29 @@ const Reducer = (state = {
 }, action) => {
     console.log("In reducer area")
     switch (action.type) {
+        case FollowingListActions.FOLLOW_PERSON_LIST_RAW:
+            console.log("Reducer picked up raw follower list: ", action.list)
+            tempFriendStatuses = {}
+            action.list.map((name) => {
+                tempFriendStatuses[name] = {}
+            })
+            return {...state, tempFriendStatusesState: tempFriendStatuses }
+        case FollowingListActions.FOLLOW_PERSON_AVATARS:
+            console.log("Reducer picked up raw follower list: ", action.list)
+            tempFriendStatuses = state.tempFriendStatusesState
+            action.list.map((pair) => {
+                tempFriendStatuses[pair.username].avatar = pair.avatar
+            })
+            return {...state, tempFriendStatusesState: tempFriendStatuses }
+        case FollowingListActions.FOLLOW_PERSON_HEADLINES:
+            console.log("Reducer picked up raw follower list: ", action.list)
+            tempFriendStatuses = state.tempFriendStatusesState
+            action.list.map((pair) => {
+                tempFriendStatuses[pair.username].headline = pair.headline
+            })
+            return {...state, tempFriendStatusesState: tempFriendStatuses }
+
+            
         case ArticleActions.ActionTypes.UPDATE_ARTICLES:
             console.log("Reducer found articles: ", action)
             // Update base list to be this user's articles
