@@ -35,6 +35,7 @@ export const setFollowingListFromServer = () => (dispatch) => {
 }
 
 export const getFollowingListHeadlines = (urlSuffix) => (dispatch) => {
+    //Should probably technically have this resource w/ a .then triggering getfollowing, as it does w/ finalize.  But it seems ok
     Actions.resource('GET', 'headlines/'+urlSuffix)
         .then((act) => {
         dispatch({type: FOLLOW_PERSON_HEADLINES, list: act.headlines})
@@ -53,10 +54,15 @@ export const getFollowingListAvatars = (urlSuffix) => (dispatch) => {
 
 
 export const removeFriend = (person) => (dispatch) => {
-    // TODO: Later, same thing as in updateCurUSer?
-    return {type: ActionTypes.REMOVE_FRIEND, person: person}
+    Actions.resource('DELETE', 'following/'+person)
+        .then((act) => {
+        dispatch({type: REMOVE_FRIEND, person: person})
+    })
 }
 
 export const addFriend = (person) => (dispatch) => {
-    return {type: ActionTypes.ADD_FRIEND, person: person}
+    Actions.resource('PUT', 'following/'+person)
+        .then((act) => {    
+        setFollowingListFromServer()(dispatch)
+    })
 }
