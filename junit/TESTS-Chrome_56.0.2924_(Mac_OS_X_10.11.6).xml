@@ -1,18 +1,29 @@
 <?xml version="1.0"?>
-<testsuite name="Chrome 56.0.2924 (Mac OS X 10.11.6)" package="" timestamp="2017-03-23T20:51:30" id="0" hostname="Christians-MacBook-Air-2.local" tests="10" errors="0" failures="0" time="0.042">
+<testsuite name="Chrome 56.0.2924 (Mac OS X 10.11.6)" package="" timestamp="2017-03-24T03:43:15" id="0" hostname="Christians-MacBook-Air-2.local" tests="21" errors="0" failures="0" time="0.082">
   <properties>
     <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36"/>
   </properties>
-  <testcase name=" resource should be a resource" time="0.005" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" resource should be a resource" time="0.006" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
   <testcase name=" resource should be postable" time="0.001" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
-  <testcase name=" resource should give me the http error" time="0.001" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
-  <testcase name=" should update error message (for displaying error mesage to user)" time="0.002" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" resource should give me the http error" time="0.002" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should update error message (for displaying error mesage to user)" time="0" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should update success message (for displaying success message to user)" time="0" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should navigate (to profile, main, or landing)" time="0.017" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
   <testcase name=" should login the user" time="0.005" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
-  <testcase name=" should not log in an invalid user" time="0.005" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
-  <testcase name=" should logout the user" time="0.002" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should not log in an invalid user" time="0.007" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should logout the user" time="0.003" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
   <testcase name=" should fetch articles (mocked request)" time="0.004" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
-  <testcase name=" should fetch the user's proile information" time="0.002" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
-  <testcase name=" should update headline" time="0.015" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should update the search keyword" time="0.001" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should dispatch actions to create a new article" time="0.006" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should render articles" time="0" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should fetch the user's proile information" time="0.008" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should update headline" time="0.009" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should state error (for displaying error message to user)" time="0.009" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should state success (for displaying success message to user)" time="0.001" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should initialize state" time="0.001" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should set the articles" time="0.001" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should set the search keyword" time="0" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
+  <testcase name=" should filter displayed articles by the search keyword" time="0.001" classname="Chrome_56_0_2924_(Mac_OS_X_10_11_6).undefined"/>
   <system-out>
     <![CDATA[Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Inside resource resource'
@@ -27,10 +38,9 @@
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'GET somePage 404: errorMsg'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'R is, ', Object{errorMsg: '404: errorMsg', result: 'Fail'}
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In reducer area'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Are we here?'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'What's the error look like? ', Object{type: 'ERROR', msg: 'Error!'}
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{errorMsg: 'Error!'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/logout'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Inside loginKUser'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Found json: ', Object{username: 'asd1', password: 'ok-pass-word'}
@@ -40,6 +50,7 @@
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'success'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In success path?'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Success path, getting articles'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Success path, getting following straightened out', undefined
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Success path, getting profile info'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In here, end of login'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Action returned: ', Object{type: 'LOGIN', name: 'asd1', password: 'ok-pass-word'}
@@ -56,22 +67,8 @@
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Fail'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Invalid login part 1'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Invalid login part', Object{type: 'ERROR', errorMsg: '404: errorMsg'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Success path, getting following straightened out', undefined
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Success path, getting profile info'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: '
-
-We're in setuser info
-
-'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: '
-
-We're in setuser info
-
-'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/email'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/dob'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/zipcode'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/avatars'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/headlines'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In here, end of login'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/logout'
@@ -80,7 +77,7 @@ We're in setuser info
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'OK'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Should get article'
-,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{UPDATE_TEXT: 'UPDATE_TEXT', ERROR: 'ERROR', MAIN_PAGE: 'MAIN_PAGE', PROFILE_PAGE: 'PROFILE_PAGE', LANDING_PAGE: 'LANDING_PAGE', LOGOUT: 'LOGOUT', url: 'https://webdev-dummy.herokuapp.com', resource: function resource(method, endpoint, payload) { ... }, fullPagesList: [Object{pageType: ..., description: ...}, Object{pageType: ..., description: ...}, Object{pageType: ..., description: ...}], ActionTypes: Object{UPDATE_TEXT: 'UPDATE_TEXT', NAVIGATE_TO: 'NAVIGATE_TO', LOGOUT: 'LOGOUT'}, registerUser: function registerUser(uName, pWord, email, phone, dob, zipcode) { ... }, logoutUser: function logoutUser() { ... }, updateText: function updateText(text) { ... }, navMain: function navMain() { ... }, navProfile: function navProfile() { ... }, logout: function logout() { ... }, navigateTo: function navigateTo(pageType) { ... }}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{UPDATE_TEXT: 'UPDATE_TEXT', ERROR: 'ERROR', MAIN_PAGE: 'MAIN_PAGE', PROFILE_PAGE: 'PROFILE_PAGE', LANDING_PAGE: 'LANDING_PAGE', LOGOUT: 'LOGOUT', url: 'https://webdev-dummy.herokuapp.com', resource: function resource(method, endpoint, payload) { ... }, fullPagesList: [Object{pageType: ..., description: ...}, Object{pageType: ..., description: ...}, Object{pageType: ..., description: ...}], ActionTypes: Object{UPDATE_TEXT: 'UPDATE_TEXT', NAVIGATE_TO: 'NAVIGATE_TO', LOGOUT: 'LOGOUT'}, registerUser: function registerUser(uName, pWord, email, phone, dob, zipcode) { ... }, logoutUser: function logoutUser() { ... }, updateText: function updateText(text) { ... }, updateError: function updateError(msg) { ... }, navMain: function navMain() { ... }, navProfile: function navProfile() { ... }, logout: function logout() { ... }, navigateTo: function navigateTo(pageType) { ... }}
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'After mocking'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'articles/steve'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/articles/steve'
@@ -88,6 +85,13 @@ We're in setuser info
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'inside  get articles request,', Object{articles: [Object{_id: ..., text: ..., date: ..., img: ..., comments: ..., author: ...}]}
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Finished call to article actions test'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{type: 'UPDATE_ARTICLES', articles: [Object{_id: ..., text: ..., date: ..., img: ..., comments: ..., author: ...}]}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/article'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Resource returned correctly', Object{method: 'POST', headers: Object{Content-Type: 'application/json', get: (key) => options.headers[key]}, json: () => new Promise((resolve, reject) => resolve(options.json)), status: 200, text: () => new Promise((resolve, reject) => resolve(options.text))}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'inside post articles,', Object{articles: [Object{_id: ..., text: ..., date: ..., author: ...}]}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Finished call to article addition test'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/email'
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Right before fetch to', 'https://webdev-dummy.herokuapp.com/dob'
@@ -106,6 +110,26 @@ We're in setuser info
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'dob path, name? ', ''
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'zipcode', '?,', Object{zipcode: 'success', name: ''}
 ,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'avatar', '?,', Object{avatars: [Object{avatar: ..., name: ...}]}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In reducer area'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Are we here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'What's the error look like? ', Object{type: 'ERROR', msg: 'Error!'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{errorMsg: 'Error!'}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In reducer area'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{text: 'text!', message: ''}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In reducer area'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Fell through to default state'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{errorMsg: '', location: 'LANDING_PAGE', text: '', message: '', curUser: Object{name: '', email: '', phone: '', dob: '', zipcode: '', avatar: '', headline: '', password: ''}, tempFriendStatusesState: Object{}, navPagesList: [], articlesList: [], nextArticleID: 1, friendStatuses: []}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Just finished default test'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In reducer area'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Reducer found articles: ', Object{type: 'UPDATE_ARTICLES', articles: [Object{a1: ...}, Object{a2: ...}]}
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'Here?'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: 'In reducer area'
+,Chrome 56.0.2924 (Mac OS X 10.11.6) LOG: Object{articlesList: [Object{text: ..., author: ...}, Object{text: ..., author: ...}]}
 
 ]]>
   </system-out>
