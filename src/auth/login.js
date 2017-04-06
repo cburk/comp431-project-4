@@ -26,9 +26,9 @@ export const Login = ({ login, raiseError }) => {
     return (
     <div>
         <h2>Login</h2>
-        <input type="text" placeholder="Username" ref={(node) => uName = node} />
-        <input type="text" placeholder="Password" ref={(node) => pWord = node} />
-        <button onClick={_login}>Login</button>
+        <input type="text" id="login-username" placeholder="Username" ref={(node) => uName = node} />
+        <input type="text" id="login-password" placeholder="Password" ref={(node) => pWord = node} />
+        <button id="login-login" onClick={_login}>Login</button>
     </div>)
 }
 
