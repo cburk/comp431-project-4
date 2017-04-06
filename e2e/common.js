@@ -9,8 +9,8 @@ exports.creds = {
 }
 */
 exports.creds = {
-    username: 'cjb6',
-    password: 'someone-task-concerned'
+    username: 'cjb6test',
+    password: 'minerals-related-business'
 }
 
 

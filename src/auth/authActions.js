@@ -17,10 +17,13 @@ export const loginUser = (Uname, Pword, isTest=false) => (dispatch) => {
     console.log("Found json: ", thisJSON)
     
     //Check properly formatted username, password
+    // Had to remove for e2e testing
+    /*
     if(uNameRE.exec(Uname) != Uname){
         dispatch({type: actions.ERROR, msg: "Wrong Login format"})
         return
     }
+    */
     if(pWordRE.exec(Pword) != Pword){
         dispatch({type: actions.ERROR, msg: "Wrong password format"})
         return

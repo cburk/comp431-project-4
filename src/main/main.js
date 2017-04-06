@@ -10,7 +10,7 @@ export const Main = ({ }) => {
     return (
     <div>
         <Headline />
-        <h1>Main Page</h1>
+        <h1 id="page-title">Main Page</h1>
         <Navbar />
         <FollowingList />
         <Articles />
