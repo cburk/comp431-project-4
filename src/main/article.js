@@ -1,12 +1,21 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 const ContentEditable = require("react-contenteditable"); 
+import * as ArticleActions from './articleActions'
 
-export const Article = ({ author, text, img, id, comments}) => {
+export const Article = ({ ErrorMessage, author, text, img, id, comments, articleEdit, addComment }) => {
     let editedText = text
+    let newCommentText = ''
     
     const finalizeEdit = () => {
         console.log("Telling server to edit article w/ new text: ", editedText)
+        articleEdit(id, editedText)
+    }
+    
+    const _addComment = () => {
+        if(newCommentText && newCommentText.value){
+            addComment(id, newCommentText.value)
+        }
     }
     
     const handleEdit = (evt) => {
@@ -15,7 +24,6 @@ export const Article = ({ author, text, img, id, comments}) => {
         console.log(evt.target.value)
         editedText = evt.target.value
     }
-    
         
     return (
         <div id="article">
@@ -30,8 +38,10 @@ export const Article = ({ author, text, img, id, comments}) => {
                 onChange={handleEdit}
             />
             </p>
-            <button>Comment</button>
+            <input type="text" ref={(node) => newCommentText = node} />
+            <button onClick={_addComment}>Comment</button>
             <button onClick={finalizeEdit}>Edit</button>
+            <span>{ErrorMessage}</span>
             </div>
             {comments.map((comment) => (
                 <p>{comment.author} commented: {comment.text}</p>
@@ -48,9 +58,11 @@ Article.propTypes = {
 }
 
 export default connect(
-    null,
+    (state) => ({ ErrorMessage: state.errorMsg }),
     (dispatch, ownProps) => {
         return {
+            articleEdit: (articleID, newText) => ArticleActions.articleEdit(articleID, newText)(dispatch),
+            addComment: (articleID, newText) => ArticleActions.addComment(articleID, newText)(dispatch)
         }
     }
 )(Article)

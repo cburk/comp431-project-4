@@ -17,6 +17,31 @@ export const getArticles = (idOrUsername) => (dispatch) => {
     )
 }
 
+export const articleEdit = (articleID, text) => (dispatch) => {
+    articlePUT(articleID, text)(dispatch)
+}
+
+export const addComment = (articleID, text) => (dispatch) => {
+    articlePUT(articleID, text, -1)(dispatch)
+}
+
+export const articlePUT = (articleID, text, commentId) => (dispatch) => {
+    console.log("In article edit")
+    const payload = commentId ? {text, commentId} : {text}
+    console.log(payload)
+    Actions.resource('PUT', 'articles/' + articleID, payload)
+    .then((r)=>{
+        console.log("inside put articles request,", r)
+        if(r.errorMsg)
+            dispatch({type: Actions.ERROR, msg: r.errorMsg})
+        else{
+            //If the request was successful, need to update the articles list for new comment case
+            getArticles()(dispatch)
+        }
+    })    
+}
+
+
 export const searchArticles = (query) => {
     return {type: ActionTypes.SEARCH, searchString: query}
 }
