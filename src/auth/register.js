@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import * as Actions from '../actions'
 
-export const Register = ({ register, raiseError }) => {
+export const Register = ({ register, raiseError, statusText }) => {
     let uName;
     let pWord;
     let displName;
@@ -45,14 +45,15 @@ export const Register = ({ register, raiseError }) => {
     return (
     <div>
         <h2>Register</h2>
-        <input type="text" placeholder="Username" pattern="[A-Za-z][A-Za-z1-9]+" required ref={(node) => uName = node} />
+        <span id='registration-status'>{statusText}</span>
+        <input type="text"  id='register-username' placeholder="Username" pattern="[A-Za-z][A-Za-z1-9]+" required ref={(node) => uName = node} />
         <input type="text" placeholder="Displayname" ref={(node) => displName = node} />
-        <input type="text" placeholder="Password" ref={(node) => pWord = node} />
-        <input type="email" placeholder="Email" ref={(node) => email = node} />
-        <input type="phone" placeholder="phone" ref={(node) => phone = node} />
-        <input type="text" placeholder="zip" ref={(node) => zip = node} />
-        <input type="date" placeholder="Date of Birth" ref={(node) => dob = node} />
-        <input type="submit" value="Submit" onClick={_register} />
+        <input id='register-password' type="text" placeholder="Password" ref={(node) => pWord = node} />
+        <input id='register-email' type="email" placeholder="Email" ref={(node) => email = node} />
+        <input id='register-phone' type="phone" placeholder="phone" ref={(node) => phone = node} />
+        <input id='register-zip' type="text" placeholder="zip" ref={(node) => zip = node} />
+        <input id='register-date' type="date" placeholder="Date of Birth" ref={(node) => dob = node} />
+        <input id='register-submit' type="submit" value="Submit" onClick={_register} />
         <input type="reset" value="Clear" />
     </div>)
 }
@@ -60,6 +61,7 @@ export const Register = ({ register, raiseError }) => {
 export default connect(
     (state) => { 
         return {
+            statusText: state.text
         }
     },
     (dispatch) => { 

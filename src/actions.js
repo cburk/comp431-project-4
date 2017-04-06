@@ -81,7 +81,7 @@ export const registerUser = ( uName,
         return {type: ERROR, msg: "ERROR: Invalid zipcode format: " + zipcode}    
     
     // TODO Later: something w/ other fields  
-    return loginUser(uName)
+    return {type: UPDATE_TEXT, text: "Successfully registered user"}
 }
 
 export const logoutUser = () => (dispatch) => {
