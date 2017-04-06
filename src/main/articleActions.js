@@ -22,12 +22,31 @@ export const searchArticles = (query) => {
 }
 
 // TODO: Probably need to add image eventually, maybe error checking for users?  etc.
-export const addNewArticle = (id, author, text) => (dispatch) => {
-    Actions.resource('POST', 'article', {text})
-    .then((r)=>{
-        console.log("inside post articles,", r)
-            return r.articles[0]
-        }).then((articleReturned) => {
-            dispatch({type: ActionTypes.ADD_ARTICLE, id: articleReturned._id, author: articleReturned.author, text: articleReturned.text})
+export const addNewArticle = (id, author, text, imageBytes) => (dispatch) => {
+    //Two different formats depending on whether there's an image or not
+    if(imageBytes){
+        const fd = new FormData()
+        fd.append('image', imageBytes)
+        fd.append('text', text)
+        const url = 'https://webdev-dummy.herokuapp.com/article'
+        fetch(url, {
+            method: 'POST',
+            credentials: 'include',
+            body: fd
+        }).then((e)=>{
+            console.log("Post w/ image to articles, response: ", e)
+            return e.json()
+        }).then((jsonResponse) => {
+            console.log(jsonResponse)
+            getArticles()(dispatch)
         })
+    }else{
+        Actions.resource('POST', 'article', {text})
+        .then((r)=>{
+            console.log("inside post articles,", r)
+                return r.articles[0]
+            }).then((articleReturned) => {
+                getArticles()(dispatch)
+            })
+    }
 }

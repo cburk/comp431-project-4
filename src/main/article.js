@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-export const Article = ({ author, text, img, id}) => {
+export const Article = ({ author, text, img, id, comments}) => {
     return (
         <div id="article">
             <p>{author} posted: </p>
@@ -11,6 +11,9 @@ export const Article = ({ author, text, img, id}) => {
              }
             <p>{text}</p>
             </div>
+            {comments.map((comment) => (
+                <p>{comment.author} commented: {comment.text}</p>
+            ))}
             <button>Comment</button>
             <button>Edit</button>
         </div>

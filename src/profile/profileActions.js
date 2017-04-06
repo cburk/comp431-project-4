@@ -19,6 +19,26 @@ export const updateHeadline = (headline) => (dispatch) => {
     })
 }
 
+export const setAvatar = (imgUploadEvent) => (dispatch) => {
+    const fileBytes = imgUploadEvent.target.files[0]    
+    const fd = new FormData()
+    fd.append('image', fileBytes)
+    
+    console.log("Form data created")
+    const url = 'https://webdev-dummy.herokuapp.com/avatar'
+    fetch(url, {
+        method: 'PUT',
+        credentials: 'include',
+        body: fd
+    }).then((e)=>{
+        console.log("Put to avatar, response: ", e)
+        return e.json()
+    }).then((jsonResponse) => {
+        console.log(jsonResponse)
+        setAvatarInfoFromServer()(dispatch)
+    })
+}
+
 
 //To be called immediately after logged in
 export const setUserInfoFromServer = (name) => (dispatch) => {
@@ -45,7 +65,6 @@ export const setEmailInfoFromServer = (name) => (dispatch) => {
 }
 
 export const setHeadlineInfoFromServer = (name) => (dispatch) => {
-    //Process for avatar slightly different
     Actions.resource('GET', 'headlines')
         .then((r)=>{
         console.log("headline", "?,", r)

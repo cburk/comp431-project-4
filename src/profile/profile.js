@@ -24,5 +24,5 @@ export const Profile = ({ curUser }) => {
 
 export default connect(
     (state) => ({ curUser: state.curUser }),
-    (dispatch) => ({  })
+    (dispatch) => ({ })
 )(Profile)

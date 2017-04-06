@@ -4,8 +4,9 @@ import Navbar from '../navbar'
 import Articles from './articles'
 import Headline from './headline'
 import FollowingList from './followingList'
+import * as Actions from '../actions'
 
-export const Main = ({  }) => {    
+export const Main = ({ }) => {    
     return (
     <div>
         <Headline />
@@ -23,5 +24,6 @@ export const Main = ({  }) => {
 
 export default connect(
     (state) => ({  }),
-    (dispatch) => ({  })
+    (dispatch) => ({
+    })
 )(Main)

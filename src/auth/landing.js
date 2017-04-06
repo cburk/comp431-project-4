@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
+import * as Actions from '../actions'
 import Login from './login'
 import Register from './register'
 
@@ -19,5 +20,6 @@ export const Landing = ({ ErrorMessage }) => {
 
 export default connect(
     (state) => ({ ErrorMessage: state.errorMsg }),
-    (dispatch) => ({  })
+    (dispatch) => ({ 
+    })
 )(Landing)

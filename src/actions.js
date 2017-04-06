@@ -43,13 +43,11 @@ export const ActionTypes = {
     LOGOUT: 'LOGOUT'
 }
 
-
-
 const uNameRE = /[A-Za-z][A-Za-z1-9]+/
 const emailRE = /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/
 const phoneRE = /\d\d\d[\-]\d\d\d[\-]\d\d\d\d/
 const zipcodeRE = /[0-9]{5}/
-      
+
 export const registerUser = ( uName,
     pWord,
     email,
@@ -57,16 +55,16 @@ export const registerUser = ( uName,
     dob,
     zipcode
 ) => {
-    
+
     if(uNameRE.exec(uName) != uName)
         return {type: ERROR, msg: "ERROR: Invalid username format: " + uName}
-    
+
     if(emailRE.exec(email) != email)
         return {type: ERROR, msg: "ERROR: Invalid email format: " + email}
-    
+
     if(phoneRE.exec(phone) != phone)
         return {type: ERROR, msg: "ERROR: Invalid phone format: " + phone}
-            
+
     //Enure users are 18+ -->    
     let over18 = false
     let curTime = Date.now();
@@ -94,7 +92,7 @@ export const logoutUser = () => (dispatch) => {
         if(r == 'OK'){
             dispatch({ type: LOGOUT })
         }
-    })   
+    })
 }
 
 export const updateText = (text) => {
