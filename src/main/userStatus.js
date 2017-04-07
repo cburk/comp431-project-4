@@ -13,11 +13,11 @@ export const UserStatus = ({ author, image, status, removeFriend }) => {
 
     
     return (
-    <div>
+    <div id="friendStatus" name={author}>
         <img src={image}></img>
         <h5>User {author} posted status:</h5>
         <h7>{status}</h7>
-        <button onClick={_removeFriend}>Remove Friend</button>
+        <button id="removeButton" onClick={_removeFriend}>Remove Friend</button>
     </div>)
 }
 

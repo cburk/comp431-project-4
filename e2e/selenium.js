@@ -11,6 +11,7 @@ exports.By = webdriver.By
 exports.findId = id => driver.findElement(webdriver.By.id(id))
 exports.findName = id => driver.findElement(webdriver.By.name(id))
 exports.findAllByClass = name => driver.findElements(webdriver.By.name(name))
+exports.findAllById = id => driver.findElements(webdriver.By.id(id))
 exports.pageSource = text => driver.getPageSource()
 //exports.findCSS = css => driver.findElement(webdriver.By.css(css))
 exports.go = _ => driver.navigate().to(url)

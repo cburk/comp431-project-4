@@ -20,9 +20,7 @@ export const FollowingList = ({ friendStatuses, addFriend }) => {
         <p>Your friends statuses</p>
         <span>
         {friendStatuses.map((friendStatus) => (
-            <div id="friendStatus">
-                <UserStatus author={friendStatus.person} image={friendStatus.image} status={friendStatus.status} />
-            </div>
+            <UserStatus author={friendStatus.person} image={friendStatus.image} status={friendStatus.status} />
         ))}
         </span>
         <br />
