@@ -24,11 +24,11 @@ export const ProfileForm = ({ curUser, errorMsg, update, handleImageChange }) =>
     <div>
         <b>This is the profile form</b>
         <input type="text" placeholder="Displayname" ref={(node) => displName = node} />
-        <input type="text" placeholder="Password" ref={(node) => pWord = node} />
-        <input type="email" placeholder="Email" ref={(node) => email = node} />
-        <input type="phone" placeholder="phone" ref={(node) => phone = node} />
-        <input type="text" placeholder="zip" ref={(node) => zip = node} />
-        <input type="submit" value="Submit" onClick={_update} />
+        <input id='pf-password' type="text" placeholder="Password" ref={(node) => pWord = node} />
+        <input id='pf-email' type="email" placeholder="Email" ref={(node) => email = node} />
+        <input id='pf-phone' type="phone" placeholder="phone" ref={(node) => phone = node} />
+        <input id='pf-zip' type="text" placeholder="zip" ref={(node) => zip = node} />
+        <input id='pf-submit' type="submit" value="Submit" onClick={_update} />
         <input type="file" placeholder="Set avatar" accept="image/*" 
         onChange={(e) => handleImageChange(e)}/>
         <p>{errorMsg}</p>

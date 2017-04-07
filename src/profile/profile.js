@@ -9,13 +9,11 @@ export const Profile = ({ curUser }) => {
         <h1>On profile page</h1>
         <Navbar />
         <img src={curUser.avatar}/>
-        <ul>
-            <li>Display Name: {curUser.displayName}</li>
-            <li>Email: {curUser.email}</li>
-            <li>Phone: {curUser.phone}</li>
-            <li>DOB: {curUser.dob}</li>
-            <li>Zip: {curUser.zipcode}</li>
-        </ul>
+        <div>Display Name: {curUser.displayName}</div>
+        <div name='p-email'>Email: {curUser.email}</div>
+        <div name='p-phone'>Phone: {curUser.phone}</div>
+        <div name='p-dob'>DOB: {curUser.dob}</div>
+        <div name='p-zip'>Zip: {curUser.zipcode}</div>
         <ProfileForm />
     </div>
     )
