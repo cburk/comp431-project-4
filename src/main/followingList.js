@@ -24,8 +24,8 @@ export const FollowingList = ({ friendStatuses, addFriend }) => {
         ))}
         </span>
         <br />
-        <input type="Text" placeholder="Enter New Friend's Name Here" ref = {(node) => friendName = node}></input>
-        <button onClick={_addFriend}>Add Friend</button>
+        <input id='add-follower-text' type="Text" placeholder="Enter New Friend's Name Here" ref = {(node) => friendName = node}></input>
+        <button id='add-follower-submit' onClick={_addFriend}>Add Friend</button>
         
     </div>)
 }

@@ -73,4 +73,22 @@ describe('Test Articles', () => {
             })
             .then(done)
     })
+
+    it('should add a followed user', (done) => {
+        const followerName = 'Follower'
+        sleep(500)
+            .then(findId('add-follower-text').sendKeys(followerName))
+            .then(findId('add-follower-submit').click())
+            .then(sleep(500))
+            .then(() => {
+                const allStatusesPromiseAfter = findAllById('friendStatus')
+                return allStatusesPromiseAfter
+            })
+            .then((statusList) => {
+                console.log("All Statuses afterwards: ", statusList)
+                console.log("Found ", statusList.length, " items")
+                expect(statusList.length).to.eql(followCount)
+            })
+            .then(done)
+    })
 })
