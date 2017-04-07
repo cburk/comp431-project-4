@@ -26,7 +26,7 @@ export const Article = ({ ErrorMessage, author, text, img, id, comments, article
     }
         
     return (
-        <div id={"article" + text + author}>
+        <div name='article' id={"article" + text + author}>
             <p>{author} posted: </p>
             {img &&
                 (<img src={img}></img>)
@@ -36,9 +36,9 @@ export const Article = ({ ErrorMessage, author, text, img, id, comments, article
                 html={text}
                 onChange={handleEdit}
             />
-            <input type="text" ref={(node) => newCommentText = node} />
-            <button onClick={_addComment}>Comment</button>
-            <button onClick={finalizeEdit}>Edit</button>
+            <input id='art-comment-text' type="text" ref={(node) => newCommentText = node} />
+            <button id='art-comment' onClick={_addComment}>Comment</button>
+            <button id='art-edit' onClick={finalizeEdit}>Edit</button>
             <span>{ErrorMessage}</span>
             {comments.map((comment) => (
                 <p>{comment.author} commented: {comment.text}</p>
