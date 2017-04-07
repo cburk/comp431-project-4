@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Navbar from '../navbar'
 import ProfileForm from './profileForm'
 
-export const Profile = ({ curUser }) => {
+export const Profile = ({ curUser, statusText }) => {
     return (
     <div>
         <h1>On profile page</h1>
@@ -14,6 +14,7 @@ export const Profile = ({ curUser }) => {
         <div name='p-phone'>Phone: {curUser.phone}</div>
         <div name='p-dob'>DOB: {curUser.dob}</div>
         <div name='p-zip'>Zip: {curUser.zipcode}</div>
+        <span id='profile-status'>{statusText}</span>
         <ProfileForm />
     </div>
     )
@@ -21,6 +22,6 @@ export const Profile = ({ curUser }) => {
 
 
 export default connect(
-    (state) => ({ curUser: state.curUser }),
+    (state) => ({ curUser: state.curUser, statusText: state.text }),
     (dispatch) => ({ })
 )(Profile)

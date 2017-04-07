@@ -153,9 +153,10 @@ export const updateUserInfo = (displayName, email, phone, zipcode, password) => 
 
     if(password){
         if(pWordRE.exec(password) != password)
-            return {type: Actions.ERROR, msg: "ERROR: Invalid password format: " + password}
+            dispatch({type: Actions.ERROR, msg: "ERROR: Invalid password format: " + password})
         else
             setInfoOnServer('password', password)(dispatch)
+            dispatch({type: Actions.UPDATE_TEXT, text: "Password will not change"})
     }
 }
 

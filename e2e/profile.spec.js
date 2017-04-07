@@ -36,6 +36,21 @@ describe('Test Profile Actions', () => {
         .then(done)
     })
 
+    it('should not update the users password', (done) => {
+        const newPass = "a-s-d"
+        findId('pf-password').sendKeys(newPass)
+        .then(findId('pf-submit').click())
+        .then(sleep(200))
+        .then(() => {return findId('profile-status')})
+        .then(textStatusObj => {
+            return textStatusObj.getText()
+        })
+        .then(text => {
+        expect(text).to.eql('Password will not change')})
+        .then(done)
+    })
     
     //password
+    //profile-status
+    //Password will not change
 })
