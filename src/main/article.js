@@ -26,7 +26,7 @@ export const Article = ({ ErrorMessage, author, text, img, id, comments, article
     }
         
     return (
-        <div name='article' id={"article" + text + author}>
+        <div name='article' data-author={author} id={"article" + text + author}>
             <p>{author} posted: </p>
             {img &&
                 (<img src={img}></img>)

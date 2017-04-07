@@ -16,8 +16,8 @@ export const Articles = ({ allArticles, searchArticles }) => {
     
     return (
     <div id="articles">
-        <input type="text" placeholder="Search here" ref={(node) => searchQuery = node} />
-        <button onClick={_searchArticles}>Search</button>
+        <input id='search-bar' type="text" placeholder="Search here" ref={(node) => searchQuery = node} />
+        <button id='search-button' onClick={_searchArticles}>Search</button>
         <p>Articles List</p>
         <span>
         {allArticles.map((art) => (

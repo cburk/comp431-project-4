@@ -30,7 +30,7 @@ describe('Test Articles', () => {
             .then(done)
     })
     */
-    
+    /*
     it('should edit an article and validate the changes appear', (done) => {
         let articleFull
         const newContent = 'new content'
@@ -56,6 +56,29 @@ describe('Test Articles', () => {
             })
             .then((text) => {
                 expect(text.indexOf(newContent)).to.not.eql(-1)
+            })
+            .then(done)
+    })
+    */
+    it('should successfully search for an article', (done) => {
+        let relevantArticle
+        const query = 'Only One Article Like This'
+        sleep(500)
+            .then(() => {findId('search-bar').sendKeys(query)})
+            .then(() => {findId('search-button').click()})
+            .then(sleep(500))
+            .then(() => {return findAllByClass('article')})
+            .then(list => {
+                expect(list.length).to.eql(1)
+                //console.log(list)
+                relevantArticle = list[0]
+                console.log("Got the full list")
+                console.log("Relevant article, attributes? ", relevantArticle)
+                return relevantArticle.getAttribute('data-author')
+            })
+            .then((authorAttr) => {
+                console.log('found author: ', authorAttr)
+                expect(authorAttr).to.eql(common.creds.username)
             })
             .then(done)
     })
