@@ -7,7 +7,6 @@ describe('Test Registration', () => {
         go().then(common.register).then(done)
     })
 
-    /*
     it('should register a new user, print success msesage', (done) => {
         sleep(500)
             .then(findId('registration-status').getText()
@@ -16,5 +15,4 @@ describe('Test Registration', () => {
                 })
                 .then(done))
     })
-    */
 })

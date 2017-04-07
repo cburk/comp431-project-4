@@ -9,7 +9,6 @@ describe('Test Profile Actions', () => {
             .then(done)
     })
     
-    /*
     it('should update the users email', (done) => {
         const newEmail = "A@new2.email"
         findId('pf-email').sendKeys(newEmail)
@@ -50,7 +49,6 @@ describe('Test Profile Actions', () => {
         expect(text).to.eql('Password will not change')})
         .then(done)
     })
-    */
     
     //password
     //profile-status

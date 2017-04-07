@@ -7,7 +7,6 @@ describe('Test Login', () => {
         go().then(common.login).then(done)
     })
 
-    /*
     it('should log in as the test user, navigate to main page', (done) => {
         sleep(500)
             .then(findId('page-title').getText()
@@ -16,5 +15,4 @@ describe('Test Login', () => {
                 })
                 .then(done))
     })
-    */
 })

@@ -10,7 +10,6 @@ describe('Test Articles', () => {
         go().then(common.login).then(done)
     })
 
-    /*
     it('should Update the status headline and verify the change', (done) => {
         const newHeadline = 'Different headline 2'
         
@@ -30,7 +29,6 @@ describe('Test Articles', () => {
             })
             .then(done)
     })
-    */
 
     it('should display correct # of followed users', (done) => {
         sleep(500)

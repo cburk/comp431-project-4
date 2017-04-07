@@ -1,0 +1,257 @@
+
+> starter@1.0.0 e2e:base /Users/christianburkhartsmeyer/comp431/project5/comp431-project-4
+> mocha --opts e2e/mocha.opts e2e/*.spec.js "--reporter" "xunit"
+
+Got the full list
+Got the full list
+Relevant article, attributes?  WebElement {
+  driver_: 
+   Driver {
+     session_: 
+      ManagedPromise {
+        flow_: [Object],
+        stack_: [Object],
+        parent_: null,
+        callbacks_: null,
+        state_: 'fulfilled',
+        handled_: true,
+        value_: [Object],
+        queue_: null },
+     executor_: DeferredExecutor { execute: [Function] },
+     flow_: 
+      ControlFlow {
+        propagateUnhandledRejections_: true,
+        activeQueue_: [Object],
+        taskQueues_: [Object],
+        shutdownTask_: null,
+        hold_: [Object] },
+     fileDetector_: null },
+  id_: 
+   ManagedPromise {
+     flow_: 
+      ControlFlow {
+        propagateUnhandledRejections_: true,
+        activeQueue_: [Object],
+        taskQueues_: [Object],
+        shutdownTask_: null,
+        hold_: [Object] },
+     stack_: null,
+     parent_: null,
+     callbacks_: null,
+     state_: 'fulfilled',
+     handled_: false,
+     value_: '0.3178445525290805-16',
+     queue_: 
+      TaskQueue {
+        name_: 'TaskQueue::1999',
+        flow_: [Object],
+        tasks_: [],
+        interrupts_: null,
+        pending_: null,
+        state_: 'finished',
+        unhandledRejections_: Set {} } } }
+found author:  cjb6test
+All stat 2 [ WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-7',
+       queue_: [Object] } },
+  WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-8',
+       queue_: [Object] } },
+  WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-9',
+       queue_: [Object] } },
+  WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-10',
+       queue_: [Object] } } ]
+Found  4  items
+All Statuses afterwards:  [ WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-7',
+       queue_: [Object] } },
+  WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-8',
+       queue_: [Object] } },
+  WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-9',
+       queue_: [Object] } } ]
+Found  3  items
+All Statuses afterwards:  [ WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-7',
+       queue_: [Object] } },
+  WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-8',
+       queue_: [Object] } },
+  WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-9',
+       queue_: [Object] } },
+  WebElement {
+    driver_: 
+     Driver {
+       session_: [Object],
+       executor_: [Object],
+       flow_: [Object],
+       fileDetector_: null },
+    id_: 
+     ManagedPromise {
+       flow_: [Object],
+       stack_: null,
+       parent_: null,
+       callbacks_: null,
+       state_: 'fulfilled',
+       handled_: false,
+       value_: '0.9432787545786134-14',
+       queue_: [Object] } } ]
+Found  4  items
+<testsuite name="Mocha Tests" tests="12" failures="0" errors="0" skipped="0" timestamp="Fri, 07 Apr 2017 19:52:58 GMT" time="28.488">
+<testcase classname="Test Articles" name="should Create a new article and validate the article appears in the feed" time="0.839"/>
+<testcase classname="Test Articles" name="should edit an article and validate the changes appear" time="1.328"/>
+<testcase classname="Test Articles" name="should successfully search for an article" time="1.4"/>
+<testcase classname="Test Articles" name="should Update the status headline and verify the change" time="1.33"/>
+<testcase classname="Test Articles" name="should display correct # of followed users" time="1.037"/>
+<testcase classname="Test Articles" name="should remove a followed user" time="1.114"/>
+<testcase classname="Test Articles" name="should add a followed user" time="1.252"/>
+<testcase classname="Test Login" name="should log in as the test user, navigate to main page" time="0.564"/>
+<testcase classname="Test Profile Actions" name="should update the users email" time="0.477"/>
+<testcase classname="Test Profile Actions" name="should update the users zipcode" time="0.395"/>
+<testcase classname="Test Profile Actions" name="should not update the users password" time="0.431"/>
+<testcase classname="Test Registration" name="should register a new user, print success msesage" time="0.577"/>
+</testsuite>

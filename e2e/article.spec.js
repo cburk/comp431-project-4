@@ -9,7 +9,6 @@ describe('Test Articles', () => {
         go().then(common.login).then(done)
     })
 
-    /*
     it('should Create a new article and validate the article appears in the feed', (done) => {
         sleep(500)
             .then(findId('add-art-text').sendKeys(artText))
@@ -29,8 +28,6 @@ describe('Test Articles', () => {
             })
             .then(done)
     })
-    */
-    /*
     it('should edit an article and validate the changes appear', (done) => {
         let articleFull
         const newContent = 'new content'
@@ -59,8 +56,6 @@ describe('Test Articles', () => {
             })
             .then(done)
     })
-    */
-    /*
     it('should successfully search for an article', (done) => {
         let relevantArticle
         const query = 'Only One Article Like This'
@@ -83,5 +78,4 @@ describe('Test Articles', () => {
             })
             .then(done)
     })
-    */
 })
