@@ -8,7 +8,6 @@ export const Comment = ({ ErrorMessage, articleID, author, text, commentID, comm
     let newCommentText = ''
     
     const finalizeEdit = () => {
-        console.log("Telling server to edit article w/ new text: ", editedText)
         commentEdit(commentID, articleID, editedText)
     }
 
