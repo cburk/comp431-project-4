@@ -5,7 +5,12 @@ import * as Actions from '../actions'
 import Login from './login'
 import Register from './register'
 
+
 export const Landing = ({ ErrorMessage }) => {
+    const _testing = () => {
+        Actions.resource('GET', 'auth/facebook')
+    }
+    
     return (
     <div>
         <h1>Welcome to The Bigger Jail</h1>

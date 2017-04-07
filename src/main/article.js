@@ -26,23 +26,20 @@ export const Article = ({ ErrorMessage, author, text, img, id, comments, article
     }
         
     return (
-        <div id="article">
+        <div id={"article" + text + author}>
             <p>{author} posted: </p>
-            <div>
             {img &&
                 (<img src={img}></img>)
              }
-            <p>
             <ContentEditable
+                name="article text"
                 html={text}
                 onChange={handleEdit}
             />
-            </p>
             <input type="text" ref={(node) => newCommentText = node} />
             <button onClick={_addComment}>Comment</button>
             <button onClick={finalizeEdit}>Edit</button>
             <span>{ErrorMessage}</span>
-            </div>
             {comments.map((comment) => (
                 <p>{comment.author} commented: {comment.text}</p>
             ))}

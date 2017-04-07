@@ -31,10 +31,10 @@ export const NewArticle = ({ author, nextID, addNewArticle }) => {
     return (
         <div class="addArticleInput">
             <p>Add a new article:</p>
-            <input type="text" ref={(node) => articleText = node} />
+            <input id='add-art-text' type="text" ref={(node) => articleText = node} />
             <input type="file" text="Add Image" accept="image/*" 
             onChange={(e) => _handleImageChange(e)}/>
-            <button onClick={_addNewArticle} >Post</button>
+            <button id='add-art-post' onClick={_addNewArticle} >Post</button>
             <button onClick={_clear_input} >Clear</button>
         </div>
     )

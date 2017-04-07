@@ -2,7 +2,7 @@ import { expect } from 'chai'
 import { go, sleep, findId, By } from './selenium'
 import common from './common'
 
-describe('Test Dummy Server Registration', () => {
+describe('Test Registration', () => {
     before('should register', (done) => {
         go().then(common.register).then(done)
     })
