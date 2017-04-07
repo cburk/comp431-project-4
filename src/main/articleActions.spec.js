@@ -15,7 +15,6 @@ beforeEach(() => {
   actions = require('../actions')
   
   articleActions = require('../main/articleActions')
-  console.log("Here?")
   //import * as authActions from './authActions'
 })
 
@@ -28,24 +27,17 @@ afterEach(() => {
 })
 
 it('should fetch articles (mocked request)', (done) => {
-    console.log("Should get article")
   // the result from the mocked AJAX call
   const articles = {articles: [{_id: 123, text: 'stuff', date: '123', img: null, comments: [], author: 'steve'}]}
-
-  console.log(actions)
   
   mock(`${actions.url}/articles/steve`, {
   	method: 'GET',
   	headers: {'Content-Type':'application/json'},
   	json: articles
   })
-
-  console.log("After mocking")
   
   articleActions.getArticles('steve')(
     action => {
-        console.log("Finished call to article actions test")
-        console.log(action)
 	  expect(action.articles).to.eql(articles.articles)
 	  done()
   	})
@@ -69,7 +61,6 @@ it('should dispatch actions to create a new article', (done) => {
     })
     
     articleActions.addNewArticle('whatever')(action => {
-        console.log("Finished call to article addition test")
 	  expect(action.type).to.eql(articleActions.ActionTypes.ADD_ARTICLE)
 	  expect(action.id).to.eql(articlesReturned.articles[0]._id)
 	  expect(action.author).to.eql(articlesReturned.articles[0].author)

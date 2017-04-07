@@ -9,7 +9,6 @@ export const Article = ({ ErrorMessage, author, text, img, id, comments, article
     let newCommentText = ''
     
     const finalizeEdit = () => {
-        console.log("Telling server to edit article w/ new text: ", editedText)
         articleEdit(id, editedText)
     }
     
@@ -20,9 +19,6 @@ export const Article = ({ ErrorMessage, author, text, img, id, comments, article
     }
     
     const handleEdit = (evt) => {
-        console.log("Article ", id, " edited!")
-        console.log(evt)
-        console.log(evt.target.value)
         editedText = evt.target.value
     }
         

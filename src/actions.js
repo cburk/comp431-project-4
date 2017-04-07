@@ -18,17 +18,12 @@ export const resource = (method, endpoint, payload) => {
     }
   }
   if (payload) options.body = JSON.stringify(payload)
-  console.log("Right before fetch to", `${url}/${endpoint}`)
 
   return fetch(`${url}/${endpoint}`, options)
     .then(r => {
       if (r.status === 200) {
-          console.log("Resource returned correctly", r)
         return (r.headers.get('Content-Type').indexOf('json') > 0) ? r.json() : r.text()
       } else {
-        // useful for debugging, but remove in production
-        console.log(`${method} ${endpoint} ${r.statusText}`)
-        // TODO: Not sure if acceptable?  Makes more sense than constantly throwing errors tho
         //throw new Error(r.statusText)
         return({errorMsg: r.statusText, result: 'Fail'})
       }
@@ -87,8 +82,6 @@ export const registerUser = ( uName,
 export const logoutUser = () => (dispatch) => {
     resource('PUT', 'logout')
         .then((r)=>{
-        console.log("Logging out requested, returned w/: ")
-        console.log(r)
         if(r == 'OK'){
             dispatch({ type: LOGOUT })
         }

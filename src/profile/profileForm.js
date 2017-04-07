@@ -12,10 +12,6 @@ export const ProfileForm = ({ curUser, errorMsg, update, handleImageChange }) =>
     let image;
     
     const _update = () => {
-        console.log("In form, found zip? ", zip)
-        console.log(zip.value)
-        console.log(zip ? zip.value : '')
-        console.log("++++++++++++")
         update(displName ? displName.value : '', email ? email.value : '', phone ? phone.value : '', zip ? zip.value : '', pWord ? pWord.value : '')
     }
         

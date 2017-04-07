@@ -37,24 +37,20 @@ const Reducer = (state = {
     //curUserStatus: userStatus,
     friendStatuses: friendStatuses
 }, action) => {
-    console.log("In reducer area")
     switch (action.type) {
         case FollowingListActions.FOLLOW_PERSON_LIST_RAW:
-            console.log("Reducer picked up raw follower list: ", action.list)
             tempFriendStatuses = {}
             action.list.map((name) => {
                 tempFriendStatuses[name] = {}
             })
             return {...state, tempFriendStatusesState: tempFriendStatuses }
         case FollowingListActions.FOLLOW_PERSON_AVATARS:
-            console.log("Reducer picked up raw follower list: ", action.list)
             tempFriendStatuses = state.tempFriendStatusesState
             action.list.map((pair) => {
                 tempFriendStatuses[pair.username].avatar = pair.avatar
             })
             return {...state, tempFriendStatusesState: tempFriendStatuses }
         case FollowingListActions.FOLLOW_PERSON_HEADLINES:
-            console.log("Reducer picked up raw follower list: ", action.list)
             tempFriendStatuses = state.tempFriendStatusesState
             action.list.map((pair) => {
                 tempFriendStatuses[pair.username].headline = pair.headline
@@ -67,30 +63,21 @@ const Reducer = (state = {
             })
             return {...state, friendStatuses: tempStatusList}
         case ArticleActions.ActionTypes.UPDATE_ARTICLES:
-            console.log("Reducer found articles: ", action)
             // Update base list to be this user's articles
             fullArticlesList = action.articles
             return { ...state, articlesList: action.articles }
         case Actions.UPDATE_TEXT:
             return { ...state, text: action.text, message: '' }
         case Actions.ERROR:
-            console.log("Are we here?")
-            console.log("What's the error look like? ", action)
             return { ...state, errorMsg: action.msg }
         case AuthActions.LOGIN:
             return { ...state, curUser: {...state.curUser, name: action.name}, location: Actions.MAIN_PAGE, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != Actions.MAIN_PAGE}) }
-        // TODO: Fill this in so it actually works
-        //case Actions.REGISTER:
-        // TODO: Rn just resetting after navigation
         case Actions.ActionTypes.NAVIGATE_TO:
             return { ...state, location: action.page, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != action.page}), ...resetState() }
         // TODO: Rn just resetting article list and error msg after navigation
         case Actions.LOGOUT:
             return { ...state, location: Actions.LANDING_PAGE, uName: '', ...resetState() }
         case ProfileActions.ActionTypes.SET_USER_INFO:
-            console.log("Action: ", action)
-            console.log("Before set info: ", state)
-            //console.log("After set info: ", { ...state, betterCurUser: {...state.betterCurUser, action.info}})
             return { ...state, curUser: {...state.curUser, ...action.info}}
         //case ProfileActions.ActionTypes.UPDATE_INFO:
         //    return { ...state, curUser: {...state.curUser, ...action.updates} }
@@ -111,7 +98,6 @@ const Reducer = (state = {
             //TODO Later: Just hardcoded other info like the image, status
             return { ...state, friendStatuses: [ ...state.friendStatuses, {person: action.person, status: 'HARDCODED NEW FRIEND STATUS', image: 'gdp_breakdown.gif'} ] }
         default:
-            console.log("Fell through to default state")
             return state
     }
 }

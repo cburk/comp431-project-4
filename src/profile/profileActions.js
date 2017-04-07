@@ -24,17 +24,14 @@ export const setAvatar = (imgUploadEvent) => (dispatch) => {
     const fd = new FormData()
     fd.append('image', fileBytes)
     
-    console.log("Form data created")
     const url = 'https://webdev-dummy.herokuapp.com/avatar'
     fetch(url, {
         method: 'PUT',
         credentials: 'include',
         body: fd
     }).then((e)=>{
-        console.log("Put to avatar, response: ", e)
         return e.json()
     }).then((jsonResponse) => {
-        console.log(jsonResponse)
         setAvatarInfoFromServer()(dispatch)
     })
 }
@@ -42,9 +39,6 @@ export const setAvatar = (imgUploadEvent) => (dispatch) => {
 
 //To be called immediately after logged in
 export const setUserInfoFromServer = (name) => (dispatch) => {
-    console.log("\n\nWe're in setuser info\n\n")
-    console.log("\n\nWe're in setuser info\n\n")
-    
     // Note: Didn't want to do it this way, but after speaking w/ TA only way we could find to test this
     setEmailInfoFromServer(name)(dispatch)
     setDobInfoFromServer(name)(dispatch)
@@ -56,7 +50,6 @@ export const setUserInfoFromServer = (name) => (dispatch) => {
 export const setEmailInfoFromServer = (name) => (dispatch) => {
     Actions.resource('GET', 'email')
         .then((r)=>{
-        console.log('email', "?,", r)
         if(r.username == name){
             const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {email: r.email}}
             dispatch(thisDispatch)
@@ -67,7 +60,6 @@ export const setEmailInfoFromServer = (name) => (dispatch) => {
 export const setHeadlineInfoFromServer = (name) => (dispatch) => {
     Actions.resource('GET', 'headlines')
         .then((r)=>{
-        console.log("headline", "?,", r)
         if(r.headlines.length == 1)
             dispatch({type: ActionTypes.SET_USER_INFO, info: r.headlines[0]})
     })
@@ -77,7 +69,6 @@ export const setAvatarInfoFromServer = (name) => (dispatch) => {
     //Process for avatar slightly different
     Actions.resource('GET', 'avatars')
         .then((r)=>{
-        console.log("avatar", "?,", r)
         if(r.avatars.length == 1)
             dispatch({type: ActionTypes.SET_USER_INFO, info: r.avatars[0]})
     })
@@ -86,12 +77,8 @@ export const setAvatarInfoFromServer = (name) => (dispatch) => {
 export const setDobInfoFromServer = (name) => (dispatch) => {
     Actions.resource('GET', 'dob')
         .then((r)=>{
-        console.log('dob', "?,", r)
-        console.log('dob path, name? ', name)
         if(r.username == name){
-            console.log("Dob path, got dispatch? ")
             const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {dob: r.dob}}
-            console.log("Dob path, got dispatch? ", thisDispatch)
             dispatch(thisDispatch)
         }
     })
@@ -100,7 +87,6 @@ export const setDobInfoFromServer = (name) => (dispatch) => {
 export const setZipcodeInfoFromServer = (name) => (dispatch) => {
     Actions.resource('GET', 'zipcode')
         .then((r)=>{
-        console.log('zipcode', "?,", r)
         if(r.username == name){
             const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {zipcode: r.zipcode}}
             dispatch(thisDispatch)
@@ -117,7 +103,6 @@ export const updateUserInfo = (displayName, email, phone, zipcode, password) => 
     //if(displayName)
         //setInfoOnServer()
         //updateObj["displayName"] = displayName
-    console.log("update user info called")
     
     // If email is not blank (i.e. they want to change it), and ill formed, error
     if(email){
@@ -142,11 +127,9 @@ export const updateUserInfo = (displayName, email, phone, zipcode, password) => 
 
     // Validate zipcode, if user tried to change it
     if(zipcode){
-        console.log("Found zipcode entered")
         if(zipcodeRE.exec(zipcode) != zipcode)
             return {type: Actions.ERROR, msg: "ERROR: Invalid zipcode format: " + zipcode}
         else{
-            console.log("Tryna set")
             setInfoOnServer('zipcode', zipcode)(dispatch)
         }
     }
@@ -164,10 +147,8 @@ export const updateUserInfo = (displayName, email, phone, zipcode, password) => 
 export const setInfoOnServer = (type, info) => (dispatch) => {
     //Process for avatar slightly different
     const jsonPayload = {[type]: info}
-    console.log("Sending json payload: ", jsonPayload)
     Actions.resource('PUT', type, jsonPayload)
         .then((r)=>{
-        console.log("response from server", "?,", r)
         dispatch({type: ActionTypes.SET_USER_INFO, info: jsonPayload})
     })
 }

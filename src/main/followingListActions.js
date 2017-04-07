@@ -9,7 +9,6 @@ import * as Actions from '../actions'
 export const setFollowingListFromServer = () => (dispatch) => {
     Actions.resource('GET', 'following')
         .then((r)=>{
-        console.log('following these:', r)
         //Figure out who we're following
         dispatch({type: FOLLOW_PERSON_LIST_RAW, list: r.following})
 
@@ -21,14 +20,10 @@ export const setFollowingListFromServer = () => (dispatch) => {
         
         return urlSuffix
     }).then((urlSuffix) => {
-        console.log("\n\nMade it to following list headlines\n\n")
-        console.log(urlSuffix, " pt 2")
         getFollowingListHeadlines(urlSuffix)(dispatch)
         
         return urlSuffix
     }).then((urlSuffix) => {
-        console.log("\n\nMade it to following list avatars\n\n")
-        console.log(urlSuffix, " pt 3")
         getFollowingListAvatars(urlSuffix)(dispatch)
         
     })

@@ -18,7 +18,6 @@ export const NewArticle = ({ author, nextID, addNewArticle }) => {
     
     const _handleImageChange = (e) => {
         articleImageBytes = e.target.files[0]
-        console.log("In handle image ", articleImageBytes)
     }
     
     const _clear_input = () => {

@@ -8,10 +8,8 @@ export const ActionTypes = {
 
 // USE: W/o any id, just get all articles and filter using search RE's
 export const getArticles = (idOrUsername) => (dispatch) => {
-    console.log('articles/' + (idOrUsername ? idOrUsername : ''))
     Actions.resource('GET', 'articles/' + (idOrUsername ? idOrUsername : ''))
     .then((r)=>{
-        console.log("inside  get articles request,", r)
             dispatch({type: ActionTypes.UPDATE_ARTICLES, articles: r.articles})
         }
     )
@@ -26,18 +24,14 @@ export const addComment = (articleID, text) => (dispatch) => {
 }
 
 export const commentEdit = (commentID, articleID, text) => (dispatch) => {
-    console.log("Did we get commentID?")
     articlePUT(articleID, text, commentID)(dispatch)
 }
 
 
 export const articlePUT = (articleID, text, commentId) => (dispatch) => {
-    console.log("In article edit, commentId? ", commentId)
     const payload = commentId ? {text, commentId} : {text}
-    console.log(payload)
     Actions.resource('PUT', 'articles/' + articleID, payload)
     .then((r)=>{
-        console.log("inside put articles request,", r)
         if(r.errorMsg)
             dispatch({type: Actions.ERROR, msg: r.errorMsg})
         else{
@@ -65,16 +59,13 @@ export const addNewArticle = (id, author, text, imageBytes) => (dispatch) => {
             credentials: 'include',
             body: fd
         }).then((e)=>{
-            console.log("Post w/ image to articles, response: ", e)
             return e.json()
         }).then((jsonResponse) => {
-            console.log(jsonResponse)
             getArticles()(dispatch)
         })
     }else{
         Actions.resource('POST', 'article', {text})
         .then((r)=>{
-            console.log("inside post articles,", r)
                 return r.articles[0]
             }).then((articleReturned) => {
                 getArticles()(dispatch)
