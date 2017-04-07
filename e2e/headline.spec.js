@@ -9,27 +9,25 @@ describe('Test Articles', () => {
         go().then(common.login).then(done)
     })
 
-    /*
-    it('should Create a new article and validate the article appears in the feed', (done) => {
+    it('should Update the status headline and verify the change', (done) => {
+        const newHeadline = 'Different headline 2'
+        
         sleep(500)
-            .then(findId('add-art-text').sendKeys(artText))
-            .then(findId('add-art-post').click())
+            .then(findId('add-headline-text').sendKeys(newHeadline))
+            .then(findId('add-headline-button').click())
+            .then(sleep(500))
             .then(() => {
-                const outerArt = findId('article' + artText + common.creds.username)
-                return outerArt
+                const displayEl = findId('headline-display')
+                return displayEl
             })
-            .then((outerArt) => {
-                const inner = outerArt.findElement(By.name('article text'))
-                return inner
+            .then((element) => {
+                return element.getText()
             })
-            .then((inner) => {
-                return inner.getText()
-            }).then((text) => {
-                expect(text).to.eql(artText)
+            .then((text) => {
+                expect(text.indexOf(newHeadline)).to.not.eql(-1)
             })
             .then(done)
     })
-    */
     /*
     it('should edit an article and validate the changes appear', (done) => {
         let articleFull

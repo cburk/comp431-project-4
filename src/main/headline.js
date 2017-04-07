@@ -21,9 +21,9 @@ export const FollowingList = ({ curUserStatus, updateStatus }) => {
     <div id="headline">
         <img src={curUserStatus.avatar}></img>
         <h5>Logged in as: {curUserStatus.name}</h5>
-        <p>Status: {curUserStatus.headline}</p>        
-        <input type="text" placeholder="Enter new status here" ref={(node) => newStatus = node} />
-        <button onClick={_updateStatus}>Update Status</button>
+        <p id='headline-display'>Status: {curUserStatus.headline}</p>        
+        <input id='add-headline-text' type="text" placeholder="Enter new status here" ref={(node) => newStatus = node} />
+        <button id='add-headline-button' onClick={_updateStatus}>Update Status</button>
     </div>)
 }
 
