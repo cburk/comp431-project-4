@@ -25,8 +25,14 @@ export const addComment = (articleID, text) => (dispatch) => {
     articlePUT(articleID, text, -1)(dispatch)
 }
 
+export const commentEdit = (commentID, articleID, text) => (dispatch) => {
+    console.log("Did we get commentID?")
+    articlePUT(articleID, text, commentID)(dispatch)
+}
+
+
 export const articlePUT = (articleID, text, commentId) => (dispatch) => {
-    console.log("In article edit")
+    console.log("In article edit, commentId? ", commentId)
     const payload = commentId ? {text, commentId} : {text}
     console.log(payload)
     Actions.resource('PUT', 'articles/' + articleID, payload)

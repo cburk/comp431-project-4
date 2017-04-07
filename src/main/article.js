@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 const ContentEditable = require("react-contenteditable"); 
 import * as ArticleActions from './articleActions'
+import Comment from './comment'
 
 export const Article = ({ ErrorMessage, author, text, img, id, comments, articleEdit, addComment }) => {
     let editedText = text
@@ -41,7 +42,7 @@ export const Article = ({ ErrorMessage, author, text, img, id, comments, article
             <button id='art-edit' onClick={finalizeEdit}>Edit</button>
             <span>{ErrorMessage}</span>
             {comments.map((comment) => (
-                <p>{comment.author} commented: {comment.text}</p>
+                <Comment articleID={id} author={comment.author} text={comment.text} commentID={comment.commentId} />
             ))}
         </div>
     )
