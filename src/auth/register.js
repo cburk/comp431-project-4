@@ -48,7 +48,7 @@ export const Register = ({ register, raiseError, statusText }) => {
         <span id='registration-status'>{statusText}</span>
         <input type="text"  id='register-username' placeholder="Username" pattern="[A-Za-z][A-Za-z1-9]+" required ref={(node) => uName = node} />
         <input type="text" placeholder="Displayname" ref={(node) => displName = node} />
-        <input id='register-password' type="text" placeholder="Password" ref={(node) => pWord = node} />
+        <input id='register-password' type="password" placeholder="Password" ref={(node) => pWord = node} />
         <input id='register-email' type="email" placeholder="Email" ref={(node) => email = node} />
         <input id='register-phone' type="phone" placeholder="phone" ref={(node) => phone = node} />
         <input id='register-zip' type="text" placeholder="zip" ref={(node) => zip = node} />
