@@ -8,7 +8,8 @@ export const LOGOUT = 'LOGOUT'
 
 import fetch from 'isomorphic-fetch'
 
-export const url = 'https://webdev-dummy.herokuapp.com'
+//export const url = 'https://webdev-dummy.herokuapp.com'
+export const url = 'http://localhost:3000'
 export const resource = (method, endpoint, payload) => {
   const options =  {
     method,

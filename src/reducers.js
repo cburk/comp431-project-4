@@ -45,6 +45,7 @@ const Reducer = (state = {
             })
             return {...state, tempFriendStatusesState: tempFriendStatuses }
         case FollowingListActions.FOLLOW_PERSON_AVATARS:
+            console.log("Follow person avatars, what do we have? ", action.list)
             tempFriendStatuses = state.tempFriendStatusesState
             action.list.map((pair) => {
                 tempFriendStatuses[pair.username].avatar = pair.avatar

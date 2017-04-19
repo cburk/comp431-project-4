@@ -24,6 +24,7 @@ export const setFollowingListFromServer = () => (dispatch) => {
         
         return urlSuffix
     }).then((urlSuffix) => {
+        console.log("Getting url ending in: ", urlSuffix)
         getFollowingListAvatars(urlSuffix)(dispatch)
         
     })
