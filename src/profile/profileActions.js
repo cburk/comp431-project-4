@@ -139,7 +139,7 @@ export const updateUserInfo = (displayName, email, phone, zipcode, password) => 
             dispatch({type: Actions.ERROR, msg: "ERROR: Invalid password format: " + password})
         else
             setInfoOnServer('password', password)(dispatch)
-            dispatch({type: Actions.UPDATE_TEXT, text: "Password will not change"})
+            dispatch({type: Actions.UPDATE_TEXT, text: "Password Updated"})
     }
 }
 

@@ -50,16 +50,20 @@ export const registerUser = ( uName,
     phone,
     dob,
     zipcode
-) => {
+) => (dispatch) => {
 
-    if(uNameRE.exec(uName) != uName)
-        return {type: ERROR, msg: "ERROR: Invalid username format: " + uName}
-
-    if(emailRE.exec(email) != email)
-        return {type: ERROR, msg: "ERROR: Invalid email format: " + email}
-
-    if(phoneRE.exec(phone) != phone)
-        return {type: ERROR, msg: "ERROR: Invalid phone format: " + phone}
+    if(uNameRE.exec(uName) != uName){
+        dispatch( {type: ERROR, msg: "ERROR: Invalid username format: " + uName} )
+        return
+    }
+    if(emailRE.exec(email) != email){
+        dispatch( {type: ERROR, msg: "ERROR: Invalid email format: " + email} )
+        return
+    }
+    if(phoneRE.exec(phone) != phone){
+        dispatch( {type: ERROR, msg: "ERROR: Invalid phone format: " + phone} )
+        return
+    }
 
     //Enure users are 18+ -->    
     let over18 = false
@@ -70,14 +74,20 @@ export const registerUser = ( uName,
     let birthTime = new Date(Date.parse(dob));
     over18 = (cutoffTime.getTime() > birthTime.getTime())
     if(!over18){
-        return { type: ERROR, msg: 'Error: must be over 18' }
+        dispatch( { type: ERROR, msg: 'Error: must be over 18' } )
+        return
     }
     
-    if(zipcodeRE.exec(zipcode) != zipcode)
-        return {type: ERROR, msg: "ERROR: Invalid zipcode format: " + zipcode}    
+    if(zipcodeRE.exec(zipcode) != zipcode){
+        dispatch( {type: ERROR, msg: "ERROR: Invalid zipcode format: " + zipcode} )
+        return
+    }
     
-    // TODO Later: something w/ other fields  
-    return {type: UPDATE_TEXT, text: "Successfully registered user"}
+    //TODO: Phone/avatar if we ever decide to do them
+    const json = {username: uName, password: pWord, email: email, phone: phone, dob: dob, avatar: 'NoneForP7', zipcode: zipcode}
+    resource('POST', 'register', json).then((act) => {
+        dispatch({type: UPDATE_TEXT, text: "Successfully registered user"})
+    })
 }
 
 export const logoutUser = () => (dispatch) => {

@@ -67,7 +67,7 @@ export default connect(
     (dispatch) => { 
         return {
             // TODO Later: Could use register action specifically in the future
-            register: (uName, pWord, email, phone, dob, zip) => dispatch(Actions.registerUser(uName, pWord, email, phone, dob, zip)),
+            register: (uName, pWord, email, phone, dob, zip) => Actions.registerUser(uName, pWord, email, phone, dob, zip)(dispatch),
             raiseError: (msg) => dispatch({type: Actions.ERROR, msg: msg})
         }
     }
