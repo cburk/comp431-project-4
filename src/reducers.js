@@ -65,7 +65,7 @@ const Reducer = (state = {
             return {...state, friendStatuses: tempStatusList}
         case ArticleActions.ActionTypes.UPDATE_ARTICLES:
             // Update base list to be this user's articles
-            fullArticlesList = action.articles
+            fullArticlesList = action.articles.sort((time1, time2) => {console.log(Date.parse(time1.date));return Date.parse(time2.date) - Date.parse(time1.date)})
             return { ...state, articlesList: action.articles }
         case Actions.UPDATE_TEXT:
             return { ...state, text: action.text, message: '' }
