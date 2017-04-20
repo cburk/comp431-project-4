@@ -38,8 +38,9 @@ export const setAvatar = (imgUploadEvent) => (dispatch) => {
 
 
 //To be called immediately after logged in
-export const setUserInfoFromServer = (name) => (dispatch) => {
+export const setUserInfoFromServer = () => (dispatch) => {
     // Note: Didn't want to do it this way, but after speaking w/ TA only way we could find to test this
+    setNameInfoFromServer()(dispatch)
     setEmailInfoFromServer(name)(dispatch)
     setDobInfoFromServer(name)(dispatch)
     setZipcodeInfoFromServer(name)(dispatch)
@@ -47,17 +48,24 @@ export const setUserInfoFromServer = (name) => (dispatch) => {
     setHeadlineInfoFromServer(name)(dispatch)
 }
 
-export const setEmailInfoFromServer = (name) => (dispatch) => {
+export const setNameInfoFromServer = () => (dispatch) => {
+    //Workaround, returns the name of the logged in user in the email response
     Actions.resource('GET', 'email')
         .then((r)=>{
-        if(r.username == name){
-            const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {email: r.email}}
+            const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {name: r.username}}
             dispatch(thisDispatch)
-        }
     })
 }
 
-export const setHeadlineInfoFromServer = (name) => (dispatch) => {
+export const setEmailInfoFromServer = () => (dispatch) => {
+    Actions.resource('GET', 'email')
+        .then((r)=>{
+            const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {email: r.email}}
+            dispatch(thisDispatch)
+    })
+}
+
+export const setHeadlineInfoFromServer = () => (dispatch) => {
     Actions.resource('GET', 'headlines')
         .then((r)=>{
         if(r.headlines.length == 1)
@@ -65,7 +73,7 @@ export const setHeadlineInfoFromServer = (name) => (dispatch) => {
     })
 }
 
-export const setAvatarInfoFromServer = (name) => (dispatch) => {
+export const setAvatarInfoFromServer = () => (dispatch) => {
     //Process for avatar slightly different
     Actions.resource('GET', 'avatars')
         .then((r)=>{
@@ -74,23 +82,19 @@ export const setAvatarInfoFromServer = (name) => (dispatch) => {
     })
 }
 
-export const setDobInfoFromServer = (name) => (dispatch) => {
+export const setDobInfoFromServer = () => (dispatch) => {
     Actions.resource('GET', 'dob')
         .then((r)=>{
-        if(r.username == name){
             const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {dob: r.dob}}
             dispatch(thisDispatch)
-        }
     })
 }
 
-export const setZipcodeInfoFromServer = (name) => (dispatch) => {
+export const setZipcodeInfoFromServer = () => (dispatch) => {
     Actions.resource('GET', 'zipcode')
         .then((r)=>{
-        if(r.username == name){
             const thisDispatch = {type: ActionTypes.SET_USER_INFO, info: {zipcode: r.zipcode}}
             dispatch(thisDispatch)
-        }
     })
 }
 

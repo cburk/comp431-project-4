@@ -6,6 +6,7 @@ export const LANDING_PAGE = 'LANDING_PAGE'
 
 export const LOGOUT = 'LOGOUT'
 
+import * as AuthActions from './auth/authActions'
 import fetch from 'isomorphic-fetch'
 
 //export const url = 'https://webdev-dummy.herokuapp.com'
@@ -38,6 +39,8 @@ export const ActionTypes = {
     NAVIGATE_TO: 'NAVIGATE_TO',
     LOGOUT: 'LOGOUT'
 }
+
+
 
 const uNameRE = /[A-Za-z][A-Za-z1-9]+/
 const emailRE = /[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+/
@@ -135,4 +138,13 @@ export const navigateTo = (pageType) => (dispatch) => {
         default:
             return logoutUser()(dispatch)
     }
+}
+
+export const tryAutoLogin = () => (dispatch) => {
+    resource('GET', 'email').then((r) => {
+        //If we can properly request resources, we have a proper session, redirect to main page
+        if(r.email){
+            AuthActions.loginInfoFetch()(dispatch)
+        }
+    })
 }

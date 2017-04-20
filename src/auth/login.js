@@ -3,9 +3,11 @@ import { connect } from 'react-redux'
 import * as Actions from '../actions'
 import * as AuthActions from '../auth/authActions'
 
-export const Login = ({ login, raiseError }) => {
+export const Login = ({ login, raiseError, tryAutoLogin }) => {
     let uName;
     let pWord;
+    
+    tryAutoLogin()
 
     const _login = () => {
         // TODO: Length checking/other validation I think?
@@ -40,7 +42,8 @@ export default connect(
     (dispatch) => { 
         return {
             login: (text, pword) => AuthActions.loginUser(text, pword)(dispatch),
-            raiseError: (msg) => dispatch({type: Actions.ERROR, msg: msg})
+            raiseError: (msg) => dispatch({type: Actions.ERROR, msg: msg}),
+            tryAutoLogin: () => Actions.tryAutoLogin()(dispatch)
         }
     }
 )(Login)

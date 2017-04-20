@@ -74,7 +74,7 @@ const Reducer = (state = {
         case Actions.ERROR:
             return { ...state, errorMsg: action.msg }
         case AuthActions.LOGIN:
-            return { ...state, curUser: {...state.curUser, name: action.name}, location: Actions.MAIN_PAGE, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != Actions.MAIN_PAGE}) }
+            return { ...state, location: Actions.MAIN_PAGE, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != Actions.MAIN_PAGE}) }
         case Actions.ActionTypes.NAVIGATE_TO:
             return { ...state, location: action.page, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != action.page}), ...resetState() }
         // TODO: Rn just resetting article list and error msg after navigation

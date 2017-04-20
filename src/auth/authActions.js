@@ -9,6 +9,13 @@ export const LOGIN = 'LOGIN'
 const uNameRE = /[a-zA-Z][a-zA-Z][a-zA-Z][0-9]/
 const pWordRE = /[a-zA-Z0-9]+\-[a-zA-Z0-9]+\-[a-zA-Z0-9]+/
       
+export const loginInfoFetch = () => (dispatch) => {
+    articleActions.getArticles()(dispatch)
+    followingListActions.setFollowingListFromServer()(dispatch)
+    profileActions.setUserInfoFromServer()(dispatch)
+    dispatch({type: LOGIN})
+}
+
 // TODO: Get password
 export const loginUser = (Uname, Pword, isTest=false) => (dispatch) => {
     let thisJSON = {username: Uname, password: Pword}
@@ -23,23 +30,11 @@ export const loginUser = (Uname, Pword, isTest=false) => (dispatch) => {
     
     actions.resource('POST', 'login', thisJSON)
         .then((r)=>{
-        if(r.result == 'success'){
-            //Get all articles for feed
-            if(!isTest)  
-                articleActions.getArticles()(dispatch)
-        }else{
+        if(r.result != 'success'){
             dispatch({type: actions.ERROR, msg: r.errorMsg})
-            isError = true
-        }
-    }).then((r)=>{
-        if(!isTest && !isError)
-            followingListActions.setFollowingListFromServer()(dispatch)
-    }).then((r)=>{
-        if(!isTest && !isError)
-            profileActions.setUserInfoFromServer(Uname)(dispatch)
-    }).then((r)=>{
-        if(!isError){
-            dispatch({type: LOGIN, name: Uname, password: Pword})
+            return
+        }else{
+            loginInfoFetch(Uname, Pword)(dispatch)
         }
     })
 }
