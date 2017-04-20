@@ -10,7 +10,8 @@ import * as AuthActions from './auth/authActions'
 import fetch from 'isomorphic-fetch'
 
 //export const url = 'https://webdev-dummy.herokuapp.com'
-export const url = 'http://localhost:3000'
+//export const url = 'http://localhost:3000'
+export const url = 'https://cjb6project7take2.herokuapp.com'
 export const resource = (method, endpoint, payload) => {
   const options =  {
     method,
