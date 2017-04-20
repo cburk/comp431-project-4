@@ -53,12 +53,14 @@ const Reducer = (state = {
             return {...state, tempFriendStatusesState: tempFriendStatuses }
         case FollowingListActions.FOLLOW_PERSON_HEADLINES:
             tempFriendStatuses = state.tempFriendStatusesState
+            console.log("Made it to follow person headlines?")
             action.list.map((pair) => {
                 tempFriendStatuses[pair.username].headline = pair.headline
             })
             return {...state, tempFriendStatusesState: tempFriendStatuses }
         case FollowingListActions.FINALIZE_FOLLOW_LIST:
             tempStatusList = []
+            console.log("Finalized?")
             Object.keys(state.tempFriendStatusesState).map((name) => {
                 tempStatusList.push({person: name, status: state.tempFriendStatusesState[name].headline, image: state.tempFriendStatusesState[name].avatar})
             })

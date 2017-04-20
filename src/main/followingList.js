@@ -15,6 +15,8 @@ export const FollowingList = ({ friendStatuses, addFriend }) => {
         }
     }
     
+    console.log("Found friend statuses: ", friendStatuses)
+    
     return (
     <div id="statusList">
         <p>Your friends statuses</p>

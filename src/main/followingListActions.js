@@ -21,12 +21,6 @@ export const setFollowingListFromServer = () => (dispatch) => {
         return urlSuffix
     }).then((urlSuffix) => {
         getFollowingListHeadlines(urlSuffix)(dispatch)
-        
-        return urlSuffix
-    }).then((urlSuffix) => {
-        console.log("Getting url ending in: ", urlSuffix)
-        getFollowingListAvatars(urlSuffix)(dispatch)
-        
     })
 }
 
@@ -35,6 +29,7 @@ export const getFollowingListHeadlines = (urlSuffix) => (dispatch) => {
     Actions.resource('GET', 'headlines/'+urlSuffix)
         .then((act) => {
         dispatch({type: FOLLOW_PERSON_HEADLINES, list: act.headlines})
+        getFollowingListAvatars(urlSuffix)(dispatch)
     })
 }
 
@@ -42,8 +37,7 @@ export const getFollowingListAvatars = (urlSuffix) => (dispatch) => {
     Actions.resource('GET', 'avatars/'+urlSuffix)
         .then((act) => {
         dispatch({type: FOLLOW_PERSON_AVATARS, list: act.avatars})
-    }).then(() => {
-        //Finally, create the actual list that's used by the 
+        //Finally, create the actual list that's used by the         
         dispatch({type: FINALIZE_FOLLOW_LIST})
     })
 }
