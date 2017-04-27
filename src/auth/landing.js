@@ -8,7 +8,15 @@ import Register from './register'
 
 export const Landing = ({ ErrorMessage }) => {
     const _testing = () => {
-        Actions.resource('GET', 'auth/facebook')
+        fetch("http://localhost:3000/login/facebook", {
+        method: "GET",
+        headers: {
+            "Content-Type": "text/plain"
+        }
+        }).then((err, res) => {
+            console.log("Res? ", res)
+            console.log("Err? ", err)
+        })
     }
     
     return (
@@ -16,6 +24,7 @@ export const Landing = ({ ErrorMessage }) => {
         <h1>Welcome to The Bigger Jail</h1>
         <span>{ErrorMessage}</span>
         <span>
+            <a href={Actions.url + "/login/facebook"}>Login with facebook!</a>
             <Login />
             <Register />
         </span>
