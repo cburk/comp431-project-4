@@ -53,7 +53,7 @@ const Reducer = (state = {
             return {...state, tempFriendStatusesState: tempFriendStatuses }
         case FollowingListActions.FOLLOW_PERSON_HEADLINES:
             tempFriendStatuses = state.tempFriendStatusesState
-            console.log("Made it to follow person headlines?")
+            console.log("Made it to follow person headlines?", action)
             action.list.map((pair) => {
                 tempFriendStatuses[pair.username].headline = pair.headline
             })
