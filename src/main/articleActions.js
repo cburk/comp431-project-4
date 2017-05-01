@@ -46,14 +46,13 @@ export const searchArticles = (query) => {
     return {type: ActionTypes.SEARCH, searchString: query}
 }
 
-// TODO: Probably need to add image eventually, maybe error checking for users?  etc.
 export const addNewArticle = (id, author, text, imageBytes) => (dispatch) => {
     //Two different formats depending on whether there's an image or not
     if(imageBytes){
         const fd = new FormData()
         fd.append('image', imageBytes)
         fd.append('text', text)
-        const url = 'https://webdev-dummy.herokuapp.com/article'
+        const url = Actions.url + '/article'
         fetch(url, {
             method: 'POST',
             credentials: 'include',
