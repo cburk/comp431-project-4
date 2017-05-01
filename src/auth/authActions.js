@@ -5,11 +5,13 @@ import * as profileActions from '../profile/profileActions'
 import * as followingListActions from '../main/followingListActions'
 
 export const LOGIN = 'LOGIN'
+export const CLEAR_ART_STATE = 'CLEAR_ART_STATE'
 
 const uNameRE = /[a-zA-Z][a-zA-Z][a-zA-Z][0-9]/
 const pWordRE = /[a-zA-Z0-9]+\-[a-zA-Z0-9]+\-[a-zA-Z0-9]+/
       
 export const loginInfoFetch = () => (dispatch) => {
+    dispatch({type: CLEAR_ART_STATE})
     articleActions.getArticles()(dispatch)
     followingListActions.setFollowingListFromServer()(dispatch)
     profileActions.setUserInfoFromServer()(dispatch)

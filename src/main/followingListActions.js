@@ -5,6 +5,7 @@ export const FINALIZE_FOLLOW_LIST = 'F_F_L'
 export const REMOVE_FRIEND = 'REMOVE_FRIEND'
 export const ADD_FRIEND = 'ADD_FRIEND'
 import * as Actions from '../actions'
+import * as ArticleActions from './articleActions'
 
 export const setFollowingListFromServer = () => (dispatch) => {
     Actions.resource('GET', 'following')
@@ -58,6 +59,7 @@ export const removeFriend = (person) => (dispatch) => {
     Actions.resource('DELETE', 'following/'+person)
         .then((act) => {
         dispatch({type: REMOVE_FRIEND, person: person})
+        ArticleActions.getArticles()(dispatch)        
     })
 }
 
@@ -65,5 +67,7 @@ export const addFriend = (person) => (dispatch) => {
     Actions.resource('PUT', 'following/'+person)
         .then((act) => {    
         setFollowingListFromServer()(dispatch)
+        //Adding followed adds articles, need to update those too
+        ArticleActions.getArticles()(dispatch)
     })
 }

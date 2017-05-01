@@ -18,6 +18,10 @@ const resetState = () => {
     return {articlesList: fullArticlesList, errorMsg: ''}
 }
 
+const blankUserState = () => {
+    return {articlesList: [], friendStatuses: []}
+}
+
 // Thought/TODO: Maybe sort navPagesList each time, so they come out looking the same?
 // TOOD: Status should probably be part of curUser's state
 const Reducer = (state = {
@@ -75,6 +79,8 @@ const Reducer = (state = {
             return { ...state, errorMsg: action.msg }
         case AuthActions.LOGIN:
             return { ...state, location: Actions.MAIN_PAGE, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != Actions.MAIN_PAGE}) }
+        case AuthActions.CLEAR_ART_STATE:
+            return { ...state, ...blankUserState() }
         case Actions.ActionTypes.NAVIGATE_TO:
             return { ...state, location: action.page, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != action.page}), ...resetState() }
         // TODO: Rn just resetting article list and error msg after navigation
