@@ -9,6 +9,11 @@ import * as Actions from '../actions'
 export const setFollowingListFromServer = () => (dispatch) => {
     Actions.resource('GET', 'following')
         .then((r)=>{
+        //If there's no one being followed, don't try to get their headlines, will still get for loggedin
+        if(r.following.length==0){
+            console.log("Not following anyone, return")
+            return
+        }
         //Figure out who we're following
         dispatch({type: FOLLOW_PERSON_LIST_RAW, list: r.following})
 
@@ -20,6 +25,12 @@ export const setFollowingListFromServer = () => (dispatch) => {
         
         return urlSuffix
     }).then((urlSuffix) => {
+        //If there's no one being followed, don't try to get their headlines, will still get for loggedin
+        if(!urlSuffix){
+            console.log("Not doing other bit")
+            return
+        }
+        console.log("Getting headlines regardless?")
         getFollowingListHeadlines(urlSuffix)(dispatch)
     })
 }
