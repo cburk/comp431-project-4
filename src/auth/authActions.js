@@ -9,7 +9,8 @@ export const CLEAR_ART_STATE = 'CLEAR_ART_STATE'
 
 export const LOGGED_IN_WITH = {
     OAUTH: 'OAUTH',
-    PASSWORD: 'PASSWORD'
+    PASSWORD: 'PASSWORD',
+    LINKED: 'LINKED'
 }
 
 const uNameRE = /[a-zA-Z][a-zA-Z][a-zA-Z][0-9]/
@@ -22,7 +23,11 @@ export const loginInfoFetch = (usingMethod) => (dispatch) => {
     if(usingMethod=='OAUTH'){
         dispatch({type: LOGIN, using: LOGGED_IN_WITH.OAUTH})
     }else{
-        dispatch({type: LOGIN, using: LOGGED_IN_WITH.PASSWORD})
+        if(usingMethod=='PASSWORD'){
+            dispatch({type: LOGIN, using: LOGGED_IN_WITH.PASSWORD})
+        }else{
+            dispatch({type: LOGIN, using: LOGGED_IN_WITH.LINKED})
+        }
     }
 }
 
