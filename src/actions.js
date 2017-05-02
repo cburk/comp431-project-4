@@ -98,6 +98,7 @@ export const logoutUser = () => (dispatch) => {
     resource('PUT', 'logout')
         .then((r)=>{
         if(r == 'OK'){
+            dispatch({type: AuthActions.CLEAR_ART_STATE})
             dispatch({ type: LOGOUT })
         }
     })
@@ -145,7 +146,7 @@ export const tryAutoLogin = () => (dispatch) => {
     resource('GET', 'email').then((r) => {
         //If we can properly request resources, we have a proper session, redirect to main page
         if(r.email){
-            AuthActions.loginInfoFetch()(dispatch)
+            AuthActions.loginInfoFetch(r.loggedInWith)(dispatch)
         }
     })
 }

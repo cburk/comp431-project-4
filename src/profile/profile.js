@@ -2,12 +2,14 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Navbar from '../navbar'
 import ProfileForm from './profileForm'
+import LinkAccountsForm from './linkAccountsForm'
 
 export const Profile = ({ curUser, statusText }) => {
     return (
     <div>
         <h1>On profile page</h1>
         <Navbar />
+        <LinkAccountsForm />
         <img src={curUser.avatar}/>
         <div>Display Name: {curUser.displayName}</div>
         <div name='p-email'>Email: {curUser.email}</div>

@@ -6,18 +6,8 @@ import Login from './login'
 import Register from './register'
 
 
-export const Landing = ({ ErrorMessage }) => {
-    const _testing = () => {
-        fetch("http://localhost:3000/login/facebook", {
-        method: "GET",
-        headers: {
-            "Content-Type": "text/plain"
-        }
-        }).then((err, res) => {
-            console.log("Res? ", res)
-            console.log("Err? ", err)
-        })
-    }
+export const Landing = ({ ErrorMessage, loggedInWith }) => {    
+    console.log("Testing: Originally, loggedinwith: ", loggedInWith)
     
     return (
     <div>
@@ -33,7 +23,7 @@ export const Landing = ({ ErrorMessage }) => {
 
 
 export default connect(
-    (state) => ({ ErrorMessage: state.errorMsg }),
+    (state) => ({ ErrorMessage: state.errorMsg, loggedInWith: state.loggedInWith }),
     (dispatch) => ({ 
     })
 )(Landing)

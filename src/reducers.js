@@ -29,6 +29,7 @@ const Reducer = (state = {
     location: Actions.LANDING_PAGE,
     text: '',
     message: '',
+    loggedInWith: AuthActions.LOGGED_IN_WITH.OAUTH,
     //curUser: {name: '', displayName: 'No display name set', email: 'asdf@stuff.com', phone: '123-456-7891', dob: 'N/A', zipcode: '14253'},
     curUser: {name: '', email: '', phone: '', dob: '', zipcode: '', avatar: '', headline: '', password: '', headline: ''},
     //}
@@ -78,13 +79,16 @@ const Reducer = (state = {
         case Actions.ERROR:
             return { ...state, errorMsg: action.msg }
         case AuthActions.LOGIN:
-            return { ...state, location: Actions.MAIN_PAGE, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != Actions.MAIN_PAGE}) }
+            //Only dispatched by username login
+            return { ...state, location: Actions.MAIN_PAGE, loggedInWith: action.using, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != Actions.MAIN_PAGE}) }
         case AuthActions.CLEAR_ART_STATE:
             return { ...state, ...blankUserState() }
         case Actions.ActionTypes.NAVIGATE_TO:
+            console.log("Logged in with: ", state.loggedInWith)
             return { ...state, location: action.page, navPagesList: Actions.fullPagesList.filter((page) => {return page.pageType != action.page}), ...resetState() }
         // TODO: Rn just resetting article list and error msg after navigation
         case Actions.LOGOUT:
+            //Default: logged in with oauth unless password login explicit
             return { ...state, location: Actions.LANDING_PAGE, uName: '', ...resetState() }
         case ProfileActions.ActionTypes.SET_USER_INFO:
             return { ...state, curUser: {...state.curUser, ...action.info}}
