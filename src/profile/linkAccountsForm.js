@@ -4,7 +4,7 @@ import * as Actions from '../actions'
 import * as AuthActions from '../auth/authActions'
 import * as LinkActions from './linkActions'
 
-export const Login = ({ link, raiseError, loggedInAs, ErrorMessage }) => {
+export const Login = ({ link, raiseError, loggedInAs, ErrorMessage, unlink }) => {
     let uName;
     let pWord;
 
@@ -41,7 +41,7 @@ export const Login = ({ link, raiseError, loggedInAs, ErrorMessage }) => {
             )
         }else{
             return (
-                <p>Will be adding unlinking option shortly</p>
+                <button onClick={unlink}>Unlink Facebook Account</button>
             )
         }
     }
@@ -67,6 +67,7 @@ export default connect(
     (dispatch) => { 
         return {
             link: (text, pword) => LinkActions.link(text, pword)(dispatch),
+            unlink: () => LinkActions.unlink()(dispatch),
             raiseError: (msg) => dispatch({type: Actions.ERROR, msg: msg}),
             tryAutoLogin: () => Actions.tryAutoLogin()(dispatch)
         }
