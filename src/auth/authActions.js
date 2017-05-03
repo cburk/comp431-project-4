@@ -31,9 +31,6 @@ export const loginInfoFetch = (usingMethod) => (dispatch) => {
     }
 }
 
-export const loginWithPayload = (json) => (dispatch) => {
-    
-}
 
 export const loginUser = (Uname, Pword, isTest=false, linkActs=false) => (dispatch) => {
     let thisJSON = {username: Uname, password: Pword}
@@ -57,7 +54,8 @@ export const loginUser = (Uname, Pword, isTest=false, linkActs=false) => (dispat
             return
         }else{
             dispatch({type: CLEAR_ART_STATE})
-            loginInfoFetch(LOGGED_IN_WITH.PASSWORD)(dispatch)
+            console.log("Does r have loggedinwith? ", r.loggedInWith)
+            loginInfoFetch(r.loggedInWith)(dispatch)
         }
     })
 }
