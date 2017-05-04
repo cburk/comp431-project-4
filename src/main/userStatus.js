@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 
 import * as FollowingListActions from './followingListActions'
 
-/* 
-Each users status
-*/
+
+//Each users status
+
 export const UserStatus = ({ author, image, status, removeFriend }) => {    
     const _removeFriend = () => {
         removeFriend(author)

@@ -6,9 +6,7 @@ import Login from './login'
 import Register from './register'
 
 
-export const Landing = ({ ErrorMessage, loggedInWith }) => {    
-    console.log("Testing: Originally, loggedinwith: ", loggedInWith)
-    
+export const Landing = ({ ErrorMessage, loggedInWith }) => {        
     return (
     <div>
         <h1>Welcome to The Bigger Jail</h1>

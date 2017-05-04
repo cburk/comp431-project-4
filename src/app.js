@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import * as Actions from './actions' 
 
-//import { updateText } from './actions'
 import Main from './main/main'
 import Landing from './auth/landing'
 import Profile from './profile/profile'
@@ -37,25 +36,8 @@ export const App = ({ text, message, update, location }) => {
     )
 }
 
-App.propTypes = {
-    //text: PropTypes.string.isRequired,
-    //message: PropTypes.string.isRequired,
-    //update: PropTypes.func.isRequired,
-}
 
 export default connect(
     (state) => ({ location: state.location, text: state.text, message: state.message }),
-    //(dispatch) => ({ update: (text) => dispatch(updateText(text)) })
     (dispatch) => ({ update: (text) => {} })
 )(App)
-
-
-/*
-    if (location == MAIN_PAGE) {
-        <Main .../>
-    } else if (location == PROFILE_PAGE) {
-        <Profile .../>
-    } else {
-        <Landing .../>
-    }
-*/

@@ -1,4 +1,3 @@
-//import ERROR, {resource} from '../actions'
 import * as actions from '../actions'
 import * as articleActions from '../main/articleActions'
 import * as profileActions from '../profile/profileActions'
@@ -35,7 +34,6 @@ export const loginInfoFetch = (usingMethod) => (dispatch) => {
 export const loginUser = (Uname, Pword, isTest=false, linkActs=false) => (dispatch) => {
     let thisJSON = {username: Uname, password: Pword}
     if(linkActs){
-        console.log("Asked login to link accounts")
         thisJSON.linkActs=true
     }
     
@@ -54,7 +52,6 @@ export const loginUser = (Uname, Pword, isTest=false, linkActs=false) => (dispat
             return
         }else{
             dispatch({type: CLEAR_ART_STATE})
-            console.log("Does r have loggedinwith? ", r.loggedInWith)
             loginInfoFetch(r.loggedInWith)(dispatch)
         }
     })

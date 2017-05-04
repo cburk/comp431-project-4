@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 
 import * as ProfileActions from '../profile/profileActions'
 
+ 
+//The box displaying a users image, status, and options to change them 
 
-/* 
-The box displaying a users image, status, and options to change them 
-*/
 export const FollowingList = ({ curUserStatus, updateStatus }) => {    
     let newStatus;
     

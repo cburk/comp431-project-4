@@ -15,7 +15,6 @@ beforeEach(() => {
   actions = require('../actions')
   
   authActions = require('./authActions')
-  //import * as authActions from './authActions'
 })
 
 
@@ -39,9 +38,7 @@ it('should login the user', (done) => {
   })
     
   authActions.loginUser(username, 'ok-pass-word', true)(
-  	//fn => fn(action => {
     action => {
-        console.log("Action returned: ", action)
 	  expect(action.name).to.eql(username) 
 	  done()
   	})

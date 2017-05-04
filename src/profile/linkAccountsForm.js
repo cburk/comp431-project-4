@@ -7,8 +7,6 @@ import * as LinkActions from './linkActions'
 export const Login = ({ link, raiseError, loggedInAs, ErrorMessage, unlink }) => {
     let uName;
     let pWord;
-
-    console.log("Logged in as frontend: ", loggedInAs)
     
     const _link = () => {
         // TODO: Length checking/other validation I think?

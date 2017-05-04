@@ -68,18 +68,16 @@ export const setEmailInfoFromServer = () => (dispatch) => {
 export const setHeadlineInfoFromServer = () => (dispatch) => {
     Actions.resource('GET', 'headlines')
         .then((r)=>{
-        console.log("Got headlines from server, r: ", r)
-        if(r.headlines.length == 1)
+        if(r.headlines.length == 1){
             dispatch({type: ActionTypes.SET_USER_INFO, info: r.headlines[0]})
+        }
     })
 }
 
 export const setAvatarInfoFromServer = () => (dispatch) => {
-    console.log("Call to get avatar stuff")
     //Process for avatar slightly different
     Actions.resource('GET', 'avatars')
         .then((r)=>{
-        console.log("Got avatars from server, r: ", r)
         if(r.avatars.length == 1)
             dispatch({type: ActionTypes.SET_USER_INFO, info: r.avatars[0]})
     })

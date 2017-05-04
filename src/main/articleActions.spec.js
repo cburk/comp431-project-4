@@ -15,7 +15,6 @@ beforeEach(() => {
   actions = require('../actions')
   
   articleActions = require('../main/articleActions')
-  //import * as authActions from './authActions'
 })
 
 

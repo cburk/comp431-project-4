@@ -9,10 +9,7 @@ export const LOGOUT = 'LOGOUT'
 import * as AuthActions from './auth/authActions'
 import fetch from 'isomorphic-fetch'
 
-//export const url = 'https://webdev-dummy.herokuapp.com'
-//export const url = 'http://localhost:3000'
 export const url = 'https://final-backend-att1.herokuapp.com'
-//export const url = 'https://cjb6project7take2.herokuapp.com'
 export const resource = (method, endpoint, payload) => {
   const options =  {
     method,
@@ -88,7 +85,6 @@ export const registerUser = ( uName,
         return
     }
     
-    //TODO: Phone/avatar if we ever decide to do them
     const json = {username: uName, password: pWord, email: email, phone: phone, dob: dob, avatar: 'NoneForP7', zipcode: zipcode}
     resource('POST', 'register', json).then((act) => {
         dispatch({type: UPDATE_TEXT, text: "Successfully registered user"})
